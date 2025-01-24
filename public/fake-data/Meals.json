@@ -1,0 +1,101 @@
+[
+    {
+        "name": "Haddock",
+        "details": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
+        "category": "salad",
+        "price": 14.7,
+        "rating": 4.5,
+        "mealType": "lunch"
+    },
+    {
+        "name": "Haddock",
+        "details": "Chargrilled fresh tuna steak (served medium rare) on classic Niçoise salad with French beans.",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
+        "category": "drinks",
+        "price": 14.7,
+        "rating": 4.2,
+        "mealType": "dinner"
+    },
+    {
+        "name": "Escalope de Veau",
+        "details": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-5-370x247.jpg",
+        "category": "popular",
+        "price": 14.5,
+        "rating": 4.7,
+        "mealType": "dinner"
+    },
+    {
+        "name": "Escalope de Veau",
+        "details": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "category": "dessert",
+        "price": 12.5,
+        "rating": 4.3,
+        "mealType": "breakfast"
+    },
+    {
+        "name": "Roast Duck Breast",
+        "details": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-5-370x247.jpg",
+        "category": "popular",
+        "price": 14.5,
+        "rating": 4.6,
+        "mealType": "lunch"
+    },
+    {
+        "name": "Escalope de Veau",
+        "details": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "category": "dessert",
+        "price": 12.5,
+        "rating": 4.0,
+        "mealType": "dinner"
+    },
+    {
+        "name": "Escalope de Veau",
+        "details": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "category": "pizza",
+        "price": 12.5,
+        "rating": 4.2,
+        "mealType": "breakfast"
+    },
+    {
+        "name": "Breton Fish Stew",
+        "details": "Chargrilled chicken with avocado, baby gem lettuce, baby spinach, shallots, French beans, walnuts, croutons and a mustard dressing",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-8-370x247.jpg",
+        "category": "pizza",
+        "price": 12.9,
+        "rating": 4.4,
+        "mealType": "lunch"
+    },
+    {
+        "name": "Chicken and Walnut Salad",
+        "details": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
+        "category": "salad",
+        "price": 13.5,
+        "rating": 4.1,
+        "mealType": "dinner"
+    },
+    {
+        "name": "Escalope de Veau",
+        "details": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "category": "soup",
+        "price": 12.5,
+        "rating": 4.3,
+        "mealType": "breakfast"
+    },
+    {
+        "name": "Chicken and Walnut Salad",
+        "details": "Pan roasted pork belly with gratin potato, braised Savoy cabbage, apples, thyme and calvados jus",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
+        "category": "dessert",
+        "price": 13.5,
+        "rating": 4.5,
+        "mealType": "lunch"
+    }
+]

@@ -1,15 +1,70 @@
 import React, { useEffect } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
 import SocialLogin from '../../shared-component/social-login/SocialLogin';
+import { useForm } from 'react-hook-form';
+import useAuth from '../../Hooks/useAuth';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
+
+    const navigate = useNavigate()
 
     // function for loading captcha 
 
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [])
+
+    //loading auth functions using useAuth hook
+
+    const { loginUser } = useAuth();
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+        reset,
+        setError,
+    } = useForm();
+
+    //handle onSubmit for submitting data 
+
+    const onSubmit = (data) => {
+
+        const { email, password, captcha } = data;
+
+        if (!validateCaptcha(captcha)) {
+
+            setError("captcha", {
+                type: "manual",
+                message: "Invalid Captcha",  // Custom error message
+            });
+
+            return;
+        }
+
+        loginUser(email, password)
+            .then(result => {
+                ('log in success', result.user);
+
+                Swal.fire(
+                    {
+                        icon: 'success',
+                        title: 'login success',
+                    }
+                )
+
+                // navigate(desiredRoute);
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
+
+    }
 
     return (
         <section className="relative flex flex-wrap lg:h-screen lg:items-center">
@@ -22,41 +77,59 @@ const Login = () => {
                     </p>
                 </div>
 
-                <form noValidate="" action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+                <form onSubmit={handleSubmit(onSubmit)} noValidate="" action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
 
 
                     <div className="space-y-1 text-sm">
 
                         <label htmlFor="email" className="block text-gray-400 dark:text-gray-600">Email</label>
 
-                        <input type="email" name="email" id="Email" placeholder="Email" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
+                        <input type="email" {...register('email', { required: 'email is required' })} id="Email" placeholder="Email" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
+
+                        {/* showing error  */}
+
+                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
 
                     </div>
 
-
+                    {/* password input field  */}
 
                     <div className="space-y-1 text-sm">
 
                         <label htmlFor="password" className="block text-gray-400 dark:text-gray-600">Password</label>
 
-                        <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
+                        <input type="password" {...register('password', { required: 'Password is required' })} id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
+
+                        {/* showing error  */}
+
+                        {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
 
                         <div className="flex justify-end text-xs text-gray-400 dark:text-gray-600">
                             <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                         </div>
                     </div>
 
+                    {/* captcha input field  */}
+
                     <div className="space-y-1 text-sm">
 
-                        <label htmlFor="password" className="block text-gray-400 dark:text-gray-600">captcha</label>
+                        <label htmlFor="password" className="block text-gray-400 dark:text-gray-600">Captcha</label>
 
-                        <input type="text" name="captcha" id="captcha" placeholder="captcha" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
+                        <input type="text" {...register('captcha', { required: 'Captcha is required' })} id="captcha" placeholder="captcha" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
+
+                        {/* showing error  */}
+
+                        {errors.captcha && <p className='text-red-500'>{errors.captcha.message}</p>}
 
                     </div>
 
                     <LoadCanvasTemplate />
 
                     <button className="block w-full p-3 text-center rounded-sm text-gray-900 dark:text-gray-50 bg-blue-400 dark:bg-blue-600">Sign in</button>
+
+                    <div className="flex text-sm gap-2">
+                        <p>Don't Have a Account ? Please </p> <Link to={`/register`} className="underline text-blue-400"> Register</Link>
+                    </div>
 
                 </form>
 

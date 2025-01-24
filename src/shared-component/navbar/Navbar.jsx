@@ -1,11 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/logo/hostel-logo.jpg'
 import { CgBell } from "react-icons/cg";
+import useAuth from "../../Hooks/useAuth";
 
 
 const Navbar = () => {
 
-
+    const { user, loading } = useAuth();
 
     const navOptions = <>
 
@@ -53,7 +54,36 @@ const Navbar = () => {
             </div>
             <div className="navbar-end space-x-4">
                 <CgBell className="text-2xl" />
-                <button className="btn btn-primary rounded-2xl">Join Us</button>
+                {
+                    user ? <div>
+                        <div className="dropdown dropdown-end">
+                            {/* Profile Picture */}
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img src={user?.photoURL} alt="Profile" />
+                                </div>
+                            </label>
+
+                            {/* Dropdown Menu */}
+                            <ul
+                                tabIndex={0}
+                                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                            >
+                                <li>
+                                    <span>{user?.displayName}</span> {/* Non-clickable */}
+                                </li>
+                                <li>
+                                    <Link to="/dashboard">Dashboard</Link>
+                                </li>
+                                <li>
+                                    <button onClick={() => console.log("Logged out")}>Logout</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                        :
+                        <Link to={`/login`} className="btn btn-primary rounded-2xl">Join Us</Link>
+                }
             </div>
         </div>
     );
