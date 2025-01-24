@@ -1,0 +1,90 @@
+import React, { useEffect } from 'react';
+import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, validateCaptcha } from 'react-simple-captcha';
+import SocialLogin from '../../shared-component/social-login/SocialLogin';
+
+const Login = () => {
+
+
+    // function for loading captcha 
+
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+    }, [])
+
+    return (
+        <section className="relative flex flex-wrap lg:h-screen lg:items-center">
+            <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
+                <div className="mx-auto max-w-lg text-center">
+                    <h1 className="text-2xl font-bold sm:text-3xl">Please Login!</h1>
+
+                    <p className="mt-4 text-gray-500">
+                        Enter the information accurately
+                    </p>
+                </div>
+
+                <form noValidate="" action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+
+
+                    <div className="space-y-1 text-sm">
+
+                        <label htmlFor="email" className="block text-gray-400 dark:text-gray-600">Email</label>
+
+                        <input type="email" name="email" id="Email" placeholder="Email" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
+
+                    </div>
+
+
+
+                    <div className="space-y-1 text-sm">
+
+                        <label htmlFor="password" className="block text-gray-400 dark:text-gray-600">Password</label>
+
+                        <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
+
+                        <div className="flex justify-end text-xs text-gray-400 dark:text-gray-600">
+                            <a rel="noopener noreferrer" href="#">Forgot Password?</a>
+                        </div>
+                    </div>
+
+                    <div className="space-y-1 text-sm">
+
+                        <label htmlFor="password" className="block text-gray-400 dark:text-gray-600">captcha</label>
+
+                        <input type="text" name="captcha" id="captcha" placeholder="captcha" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
+
+                    </div>
+
+                    <LoadCanvasTemplate />
+
+                    <button className="block w-full p-3 text-center rounded-sm text-gray-900 dark:text-gray-50 bg-blue-400 dark:bg-blue-600">Sign in</button>
+
+                </form>
+
+                {/* main form ends here  */}
+
+                <div className="flex items-center pt-4 space-x-1">
+                    <div className="flex-1 h-px sm:w-16 bg-gray-700 dark:bg-gray-300"></div>
+                    <p className="px-3 text-sm text-gray-400 dark:text-gray-600">Login with social accounts</p>
+                    <div className="flex-1 h-px sm:w-16 bg-gray-700 dark:bg-gray-300"></div>
+                </div>
+
+                {/* social login entry point */}
+
+                <div className='w-[50%] mx-auto'>
+                    <SocialLogin />
+                </div>
+
+            </div>
+
+            <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+                <img
+                    alt=""
+                    src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                    className="absolute inset-0 h-full w-full object-cover"
+                />
+            </div>
+        </section>
+    );
+};
+
+export default Login;
