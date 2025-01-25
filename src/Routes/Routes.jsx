@@ -6,7 +6,11 @@ import Home from "../pages/home/Home";
 import ErrorPage from "../pages/error-page/ErrorPage";
 import Login from "../pages/auth-page/Login";
 import Register from "../pages/auth-page/Register";
+import MealDetails from "../pages/meal-details-page/MealDetails";
+import useAxiosPublic from "../Hooks/useAxiosPublic";
 
+
+const axiosPublic = useAxiosPublic();
 
 
 export const router = createBrowserRouter([
@@ -19,6 +23,11 @@ export const router = createBrowserRouter([
             {
                 path: '',
                 element: <Home />
+            },
+            {
+                path: 'meal-details/:id',
+                element: <MealDetails />,
+                loader: ({ params }) => axiosPublic.get(`/meals/${params.id}`)
             },
             {
                 path: 'login',

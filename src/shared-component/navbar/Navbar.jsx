@@ -2,11 +2,12 @@ import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/logo/hostel-logo.jpg'
 import { CgBell } from "react-icons/cg";
 import useAuth from "../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 
 const Navbar = () => {
 
-    const { user, loading } = useAuth();
+    const { user, loading, logoutUser } = useAuth();
 
     const navOptions = <>
 
@@ -16,6 +17,14 @@ const Navbar = () => {
 
 
     </>
+
+    const handleLogout = () => {
+        logoutUser()
+            .then(res => {
+                // console.log(res);
+                Swal.fire({ icon: 'success', title: 'User Logged Out Successfully' })
+            })
+    }
 
     return (
         <div className="navbar bg-base-100 shadow-sm">
@@ -70,13 +79,13 @@ const Navbar = () => {
                                 className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
                             >
                                 <li>
-                                    <span>{user?.displayName}</span> {/* Non-clickable */}
+                                    <span >{user?.displayName}</span> {/* Non-clickable */}
                                 </li>
                                 <li>
                                     <Link to="/dashboard">Dashboard</Link>
                                 </li>
                                 <li>
-                                    <button onClick={() => console.log("Logged out")}>Logout</button>
+                                    <button onClick={handleLogout}>Logout</button>
                                 </li>
                             </ul>
                         </div>

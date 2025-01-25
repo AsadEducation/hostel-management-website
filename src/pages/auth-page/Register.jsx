@@ -2,12 +2,14 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from '../../Hooks/useAuth'
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const Register = () => {
 
 
     const { createNewUser, updateUser } = useAuth();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     // using react hook form 
 
@@ -29,28 +31,22 @@ const Register = () => {
                 updateUser({ displayName: name, photoURL: photoUrl })
                     .then(result => {
 
-                        Swal.fire(
-                            {
-                                icon: 'success',
-                                title: 'user created and updated'
-                            }
-                        )
+                        axiosPublic.post('/user', { name, email, photoUrl,membership:"Bronze"})
+                            .then(res => {
+                                console.log(res);
+                                if (res.data.insertedId) {
+                                    Swal.fire(
+                                        {
+                                            icon: 'success',
+                                            title: 'user added to db'
+                                        }
+                                    )
 
-                        // axios.post('/user', { name, email, photoUrl })
-                        //     .then(res => {
-                        //         if (res.data.insertedId) {
-                        //             Swal.fire(
-                        //                 {
-                        //                     icon: 'success',
-                        //                     title: 'user added to db'
-                        //                 }
-                        //             )
+                                    navigate('/login');
 
-                        //             navigate('/login');
-
-                        //             reset();
-                        //         }
-                        //     })
+                                    reset();
+                                }
+                            })
 
                     }) //err that can occur while updating user
                     .then(err => {
@@ -121,7 +117,7 @@ const Register = () => {
 
                         </div>
                     </div>
-                    <button className="w-full px-8 py-3 font-semibold rounded-md dark:text-gray-50 dark:bg-violet-600">Register</button>
+                    <button className="w-full btn px-8 py-3 font-semibold rounded-md dark:text-gray-50 dark:bg-blue-600">Register</button>
                     <div className="flex text-sm gap-2">
                         <p>Already Have a Account ? consider </p> <Link to={`/login`} className="underline text-blue-400"> Login</Link>
                     </div>
