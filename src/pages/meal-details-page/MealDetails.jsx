@@ -22,11 +22,11 @@ const MealDetails = () => {
 
     const handleLike = async () => {
 
-        setLike(like + 1);
+        const updatedLike = like + 1;
+        setLike(updatedLike);
 
         if (loading) return <span className="loading loading-bars loading-xs"></span>
         if (user) {
-
             try {
 
                 const res = await axiosPublic.patch(`/meal/like/${_id}`, { reactionCount: like })

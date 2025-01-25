@@ -8,6 +8,7 @@ import Login from "../pages/auth-page/Login";
 import Register from "../pages/auth-page/Register";
 import MealDetails from "../pages/meal-details-page/MealDetails";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import AllMeals from "../pages/all-meals-page/AllMeals";
 
 
 const axiosPublic = useAxiosPublic();
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
             {
                 path: '',
                 element: <Home />
+            },
+            {
+                path: 'meals',
+                element: <AllMeals />
             },
             {
                 path: 'meal-details/:id',

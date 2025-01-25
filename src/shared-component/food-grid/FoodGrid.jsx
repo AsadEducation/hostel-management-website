@@ -1,4 +1,5 @@
 import MealCard from "../meal-card/MealCard";
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 const FoodGrid = ({ items }) => {
 
@@ -12,6 +13,8 @@ const FoodGrid = ({ items }) => {
                 })
             }
         </div>
+
+        
     );
 };
 

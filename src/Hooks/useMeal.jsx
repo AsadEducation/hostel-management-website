@@ -2,19 +2,19 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "./useAxiosPublic";
 
 
-const useMeal = () => {
+const useMeal = (search, category, min, max) => {
 
     const axiosPublic = useAxiosPublic();
 
-    const { data: meals = [] } = useQuery({
+    const { data: meals = [], isLoading ,refetch } = useQuery({
 
-        queryKey: ['meals'],
+        queryKey: ['meals', search, category, min, max],
 
         queryFn: async () => {
 
             try {
 
-                const res = await axiosPublic.get('/meals')
+                const res = await axiosPublic.get(`/meals?search=${search}&category=${category}&min=${min}&max=${max}`)
                 // console.log(res.data);
                 return res.data
 
@@ -25,7 +25,7 @@ const useMeal = () => {
         }
     })
 
-    return { meals }
+    return { meals, isLoading ,refetch }
 };
 
 export default useMeal;
