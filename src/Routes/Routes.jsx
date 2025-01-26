@@ -9,6 +9,8 @@ import Register from "../pages/auth-page/Register";
 import MealDetails from "../pages/meal-details-page/MealDetails";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import AllMeals from "../pages/all-meals-page/AllMeals";
+import DashboardLayout from "../layout/DashboardLayout";
+import UserProfile from "../dashboard-pages/user-profile-page/UserProfile";
 
 
 const axiosPublic = useAxiosPublic();
@@ -41,6 +43,18 @@ export const router = createBrowserRouter([
             {
                 path: 'register',
                 element: <Register />
+            }
+        ]
+    },
+    //dashboard routes
+    {
+        path: 'dashboard',
+        element: <DashboardLayout />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: 'user-profile',
+                element: <UserProfile />
             }
         ]
     }

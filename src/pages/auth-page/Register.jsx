@@ -17,7 +17,7 @@ const Register = () => {
 
     const onSubmit = async (data) => {
 
-        console.log(data);
+        // console.log(data);
 
         const { name, email, photoUrl, password } = data;
 
@@ -31,10 +31,11 @@ const Register = () => {
                 updateUser({ displayName: name, photoURL: photoUrl })
                     .then(result => {
 
-                        axiosPublic.post('/user', { name, email, photoUrl,membership:"Bronze"})
+                        axiosPublic.post('/user', { name, email, photoUrl, membership: "Bronze" })
                             .then(res => {
-                                console.log(res);
+                                // console.log(res);
                                 if (res.data.insertedId) {
+
                                     Swal.fire(
                                         {
                                             icon: 'success',
@@ -43,9 +44,11 @@ const Register = () => {
                                     )
 
                                     navigate('/login');
-
-                                    reset();
+                                    reset(); return;
                                 }
+
+                                Swal.fire({ icon: 'warning', title: 'User Already Exists please login' })
+
                             })
 
                     }) //err that can occur while updating user
@@ -55,13 +58,8 @@ const Register = () => {
             }
         } catch (error) {
             console.error('Error creating user:', error.message);
-
-
         }
-
-
     }
-
 
     return (
         <section className="relative flex flex-wrap lg:h-screen lg:items-center">
