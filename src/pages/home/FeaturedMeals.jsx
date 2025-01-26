@@ -5,7 +5,7 @@ import FoodGrid from "../../shared-component/food-grid/FoodGrid";
 
 const FeaturedMeals = () => {
 
-    const { meals } = useMeal();
+    const { meals } = useMeal(); //console.log(meals);
 
     const breakfast = meals.filter((each) => each.mealType === "breakfast")
     const lunch = meals.filter((each) => each.mealType === "lunch")
