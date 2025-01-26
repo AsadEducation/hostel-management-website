@@ -17,8 +17,11 @@ const ReviewSection = ({ info }) => {
 
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
-    const { reviews, refetch } = useReviews('reviews');
+    const { reviews, refetch } = useReviews('review-count');
     const textareaRef = useRef();
+
+    const { reviewCount } = reviews;
+
 
     const handleAddReview = () => {
 
@@ -34,6 +37,7 @@ const ReviewSection = ({ info }) => {
                 .then(res => {
                     if (res.data.insertedId) {
                         Swal.fire({ icon: "success", title: "your review added successfully" });
+                        textareaRef.current.value = '';
                     }
                     refetch();
                 })
@@ -46,7 +50,7 @@ const ReviewSection = ({ info }) => {
 
     return (
         <div className="min-h-[50vh] space-y-12 my-12 lg:space-y-16">
-            <h2 className="text-3xl lg:text-4xl text-center text-green-500 font-semibold animate-bounce italic"> User Reviews ({reviews.length})</h2>
+            <h2 className="text-3xl lg:text-4xl text-center text-green-500 font-semibold animate-bounce italic"> User Reviews ({reviewCount})</h2>
 
 
             <div className="w-[80vw] mx-auto">
