@@ -4,6 +4,7 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useState } from "react";
+import ReviewSection from "./ReviewSection";
 
 
 const MealDetails = () => {
@@ -125,6 +126,11 @@ const MealDetails = () => {
 
                 </div>
             </div>
+
+            {/* review section  */}
+
+            <ReviewSection info={data} />
+
         </div >
     );
 };
