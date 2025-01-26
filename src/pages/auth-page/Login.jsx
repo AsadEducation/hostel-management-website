@@ -3,23 +3,23 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, val
 import SocialLogin from '../../shared-component/social-login/SocialLogin';
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Login = () => {
 
 
-    const navigate = useNavigate()
+    // all hooks     
+    const { loginUser } = useAuth();//loading auth functions using useAuth hook
+    const navigate = useNavigate();
+    const { state } = useLocation();
+    const desiredRoute = state || '/';
+
 
     // function for loading captcha 
-
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, [])
-
-    //loading auth functions using useAuth hook
-
-    const { loginUser } = useAuth();
 
     const {
         register,
@@ -30,7 +30,6 @@ const Login = () => {
     } = useForm();
 
     //handle onSubmit for submitting data 
-
     const onSubmit = (data) => {
 
         const { email, password, captcha } = data;
@@ -56,7 +55,7 @@ const Login = () => {
                     }
                 )
 
-                // navigate(desiredRoute);
+                navigate(desiredRoute);
 
             })
             .catch(err => {
