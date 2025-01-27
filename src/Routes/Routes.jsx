@@ -17,6 +17,7 @@ import ReviewEdit from "../dashboard-pages/review-edit-page/ReviewEdit";
 import AdminRoute from "./AdminRoute";
 import AdminProfile from "../dashboard-pages/admin-profile/AdminProfile";
 import ManageUsers from "../dashboard-pages/manage-users/ManageUsers";
+import AllReviews from "../dashboard-pages/all-reviews-page/AllReviews";
 
 
 const axiosPublic = useAxiosPublic();
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
             {
                 path: 'manage-users',
                 element: <AdminRoute><ManageUsers /></AdminRoute>
+            },
+            {
+                path: 'all-reviews',
+                element: <AdminRoute><AllReviews /></AdminRoute>
             },
         ]
     }

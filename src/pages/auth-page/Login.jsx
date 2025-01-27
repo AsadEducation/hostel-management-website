@@ -124,7 +124,7 @@ const Login = () => {
 
                     <LoadCanvasTemplate />
 
-                    <button className="block w-full p-3 text-center rounded-sm text-gray-900 dark:text-gray-50 bg-blue-400 dark:bg-blue-600">Sign in</button>
+                    <button className="block btn w-full p-3 text-center rounded-sm text-gray-900 dark:text-gray-50 bg-blue-400 dark:bg-blue-600">Login</button>
 
                     <div className="flex text-sm gap-2">
                         <p>Don't Have a Account ? Please </p> <Link to={`/register`} className="underline text-blue-400"> Register</Link>

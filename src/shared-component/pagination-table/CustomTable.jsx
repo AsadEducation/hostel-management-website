@@ -7,24 +7,27 @@ import { Link } from "react-router-dom";
 
 const CustomTable = ({ info }) => {
 
-    const { data, refetch } = info;
+    const { data, refetch } = info; //console.log(data)
 
-    if (!data.length) return <div>Data Loading</div>
+    if (!data || !data.length) return <div>Data Loading...</div>;
 
-    //---------------------------------------------------pagination related starts---------------------------------------------------------------------
+
+    //---------------------------------------------------pagination related starts-------------------------------------------
     //all the things related to calculation of page
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(0);
     const recordsPerPage = 5;
-    const lastIndex = currentPage * recordsPerPage;
-    const firstIndex = lastIndex - recordsPerPage;
-    const totalPages = Math.ceil(data.length / 5); // here 5 is records per page . we can make it dynamic later
+
+    const firstIndex = currentPage * recordsPerPage;
+    const lastIndex = firstIndex + recordsPerPage;
+
+    const totalPages = Math.ceil(data.length / recordsPerPage);// console.log(totalPages)// here 5 is records per page . we can make it dynamic later
 
     //all things related showing data in a page
     const records = data.slice(firstIndex, lastIndex);
 
     //all things related to page number
-    const pageNumbers = [...Array(totalPages + 1).keys()];  // console.log(pageNumbers);
-    // ---------------------------------------------------pagination related ends--------------------------------------------------------------------------------------
+    const pageNumbers = [...Array(totalPages).keys()];  // console.log(pageNumbers);
+    // ---------------------------------------------------pagination related ends-----------------------------------------------
 
     const axiosPublic = useAxiosPublic();
 
@@ -61,7 +64,7 @@ const CustomTable = ({ info }) => {
                     <thead className="ltr:text-left rtl:text-right">
                         {
                             // if review user is accessing the table 
-                            data[0]?.meal_name && <tr>
+                            data[0]?.meal_id && <tr>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Review</th>
@@ -82,44 +85,44 @@ const CustomTable = ({ info }) => {
 
                     <tbody className="divide-y divide-gray-200">
                         {
-                            records.map((record, index) => {
-                                if (record?.meal_name) {
+                            records.map((each, index) => {
+                                if (each?.meal_id) {
                                     return (
                                         // if review user is accessing the table 
                                         <tr key={index} >
-                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{record?.meal_name}</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{record?.likes_count}</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{record?.reviewText}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.meal_name}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.likes_count}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.reviewText}</td>
                                             <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
-                                                <Link state={record} to={`/dashboard/review-edit`} className="btn btn-ghost"><FaEdit className="text-blue-500 " /></Link>
-                                                <button onClick={() => handleReviewDelete(record._id)} className="btn btn-ghost"><FaTrash className="text-red-500 " /></button>
-                                                <Link to={`/meal-details/${record.meal_id}`} className="btn btn-ghost">view</Link>
+                                                <Link state={each} to={`/dashboard/review-edit`} className="btn btn-ghost"><FaEdit className="text-blue-500 " /></Link>
+                                                <button onClick={() => handleReviewDelete(each?._id)} className="btn btn-ghost"><FaTrash className="text-red-500 " /></button>
+                                                <Link to={`/meal-details/${each?.meal_id}`} className="btn btn-ghost">view</Link>
                                             </td>
                                         </tr>
                                     )
                                 }
-                                if (record?.email) {
+                                if (each?.email) {
                                     return (
                                         <tr key={index}>
                                             <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
-                                                {record?.name}
+                                                {each?.name}
                                             </td>
                                             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                {record?.email}
+                                                {each?.email}
                                             </td>
                                             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                {record?.role ? "Admin" : "User"}
+                                                {each?.role ? "Admin" : "User"}
                                             </td>
                                             <td className="whitespace-nowrap  px-4 py-2 text-gray-700">
                                                 <button
-                                                    onClick={() => handleMakeAdmin(record?._id)}
+                                                    onClick={() => handleMakeAdmin(each?._id)}
                                                     className="btn "
                                                 >
                                                     Make Admin
                                                 </button>
                                             </td>
                                             <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                {record?.subscriptionStatus}
+                                                {each?.subscriptionStatus}
                                             </td>
                                         </tr>
                                     )
@@ -139,7 +142,7 @@ const CustomTable = ({ info }) => {
                     <li>
                         <button
                             onClick={() => {
-                                currentPage > 1 ? setCurrentPage(currentPage - 1) : Swal.fire({ icon: 'warning', title: 'No more page forward' })
+                                currentPage > 0 ? setCurrentPage(currentPage - 1) : Swal.fire({ icon: 'warning', title: 'No more page forward' })
                             }}
                             className="btn"
                         >
@@ -163,15 +166,15 @@ const CustomTable = ({ info }) => {
 
                     {
                         pageNumbers.map((pageNumber, index) => {
+                            // console.log('page',pageNumber , typeof(pageNumber));
                             return <li key={index}>
                                 <button
-                                    href="#"
-                                    className="btn"
-                                    onClick={(e) => {
-                                        setCurrentPage(pageNumber + 1)
+                                    className={`btn ${currentPage === pageNumber ? "btn-active" : ""}`}
+                                    onClick={() => {
+                                        setCurrentPage(pageNumber)
                                     }}
                                 >
-                                    {pageNumber + 1}
+                                    {pageNumber}
                                 </button>
                             </li>
                         })
@@ -182,7 +185,7 @@ const CustomTable = ({ info }) => {
                     <li>
                         <button
                             onClick={() => {
-                                currentPage < totalPages ? setCurrentPage(currentPage + 1) :
+                                currentPage < pageNumbers.length - 1 ? setCurrentPage(currentPage + 1) :
                                     Swal.fire({ icon: 'warning', title: 'end of the page' })
                             }}
                             className="btn"

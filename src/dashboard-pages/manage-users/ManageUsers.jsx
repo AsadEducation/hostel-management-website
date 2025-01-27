@@ -3,7 +3,7 @@ import CustomTable from "../../shared-component/pagination-table/CustomTable";
 
 
 const ManageUsers = () => {
-    const { users: data, refetch } = useUser(); console.log(data);
+    const { users: data, refetch } = useUser(); //console.log(data);
 
     const info = {
         data,

@@ -8,7 +8,7 @@ import useAdmin from "../Hooks/useAdmin";
 
 const DashboardLayout = () => {
 
-    const { isAdmin } = useAdmin(); console.log('isAdmin from dashboard layout', isAdmin);
+    const { isAdmin } = useAdmin(); //console.log('isAdmin from dashboard layout', isAdmin);
 
     return (
         <div className='flex min-h-screen'>
@@ -30,6 +30,7 @@ const DashboardLayout = () => {
 
                             <li><NavLink to={`/dashboard/admin-profile`}><CgProfile /><span className="hidden md:block">Admin Profile</span></NavLink></li>
                             <li><NavLink to={`/dashboard/manage-users`}><FaUserGroup /><span className="hidden md:block">Manage Users</span></NavLink></li>
+                            <li><NavLink to={`/dashboard/all-reviews`}><FaUserGroup /><span className="hidden md:block">All Reviews</span></NavLink></li>
 
                         </>
                             : <>

@@ -12,8 +12,8 @@ const useAdmin = () => {
         enabled: !loading,
         queryFn: async (req, res) => {
             try {
-                const res = await axiosPublic.get(`/user/admin/${user?.email}`)
-                return res.data
+                const res = await axiosPublic.get(`/user/admin/${user?.email}`); //console.log(res.data.isAdmin);
+                return res.data.isAdmin;
 
             } catch (error) {
                 console.log(error);

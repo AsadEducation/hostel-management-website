@@ -7,7 +7,7 @@ const AdminRoute = ({ children }) => {
 
     const { user, loading } = useAuth();
 
-    const { isAdmin, isAdminLoading } = useAdmin(); console.log('isAdmin from admin route', isAdmin);
+    const { isAdmin, isAdminLoading } = useAdmin(); //console.log('isAdmin from admin route', isAdmin);
 
     const { pathname } = useLocation();
 
