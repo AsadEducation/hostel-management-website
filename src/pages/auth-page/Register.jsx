@@ -52,12 +52,10 @@ const Register = () => {
                             })
 
                     }) //err that can occur while updating user
-                    .then(err => {
-                        ('error', err);
-                    })
             }
         } catch (error) {
-            console.error('Error creating user:', error.message);
+            // console.error('Error creating user:', error.message);
+            Swal.fire({ icon: 'error', title: `${error.message}` })
         }
     }
 

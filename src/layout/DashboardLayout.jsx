@@ -1,11 +1,13 @@
 import { CgGift, CgProfile } from "react-icons/cg";
 import { FaBurger, FaPaypal } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
+import useAuth from "../Hooks/useAuth";
 
 
 const DashboardLayout = () => {
 
     const isAdmin = false;
+    const { user } = useAuth();
 
     return (
         <div className='flex min-h-screen'>
@@ -36,10 +38,10 @@ const DashboardLayout = () => {
 
                                 {/* user links  */}
 
-                                <li><NavLink to={`/dashboard/user-profile`}><CgProfile />My Profile</NavLink></li>
-                                <li><NavLink to={`/dashboard/requested-meal`}><FaBurger />Requested Meal</NavLink></li>
-                                <li><NavLink to={`/dashboard/user-review`}><CgGift />My Reviews</NavLink></li>
-                                <li><NavLink to={`/dashboard/payment-history`}><FaPaypal />Payment History</NavLink></li>
+                                <li><NavLink to={`/dashboard/user-profile`}><CgProfile /><span className="hidden md:block">My Profile</span></NavLink></li>
+                                <li><NavLink to={`/dashboard/requested-meal`}><FaBurger /><span className="hidden md:block">Requested Meal</span></NavLink></li>
+                                <li><NavLink to={`/dashboard/users-review`}><CgGift /><span className="hidden md:block">My Reviews</span></NavLink></li>
+                                <li><NavLink to={`/dashboard/payment-history`}><FaPaypal /><span className="hidden md:block">Payment History</span></NavLink></li>
                             </>
                     }
 

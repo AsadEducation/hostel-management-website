@@ -32,7 +32,7 @@ const MealDetails = () => {
 
                 const res = await axiosPublic.patch(`/meal/like/${_id}`, { reactionCount: like })
                 if (res.data) {
-                    console.log(res.data);
+                    // console.log(res.data);
                     return;
                 }
 
@@ -133,7 +133,15 @@ const MealDetails = () => {
 
             {/* review section  */}
 
-            <ReviewSection  info={data} />
+            <ReviewSection info={{
+                name,
+                image,
+                category,
+                price,
+                mealType,
+                _id,
+                like
+            }} />
 
         </div>
     );

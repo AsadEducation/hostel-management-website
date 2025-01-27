@@ -1,24 +1,43 @@
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 
 const SocialLogin = () => {
 
     const { googleLogin } = useAuth();
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
-    const handleGoogleLogin = () => {
-        googleLogin()
-            .then(res => {
+    const handleGoogleLogin = async () => {
+
+        try {
+
+            const result = await googleLogin();
+
+            if (result?.user) {
+                // Adding the user in DB
+
+                const res = await axiosPublic.post('/user', {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    photoUrl: result.user?.photoURL,
+                    membership: "Bronze",
+                });
+
                 // console.log(res);
-                if (res?.user) {
-                    Swal.fire({ icon: 'success', title: 'Google Login successful' })
-                    navigate('/')
+
+                if (res.data.insertedId) {
+                    Swal.fire({ icon: 'success', title: 'Google Login successful' });
+                    navigate('/');
                 }
-            })
-            .catch(err => console.log(err))
-    }
+
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     return (
         <div>

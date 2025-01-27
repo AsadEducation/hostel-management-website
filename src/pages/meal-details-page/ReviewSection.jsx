@@ -13,6 +13,7 @@ const ReviewSection = ({ info }) => {
         price,
         mealType,
         _id,
+        like
     } = info;
 
     const { user } = useAuth();
@@ -27,10 +28,12 @@ const ReviewSection = ({ info }) => {
 
         const userReview = {
             reviewText: textareaRef.current.value,
+            meal_name: name,
             meal_id: _id,
             meal_category: category,
             meal_type: mealType,
             user_email: user?.email,
+            likes_count: like,
         }
         try {
             axiosPublic.post('/review', userReview)

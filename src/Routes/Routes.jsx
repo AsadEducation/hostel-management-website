@@ -11,6 +11,8 @@ import useAxiosPublic from "../Hooks/useAxiosPublic";
 import AllMeals from "../pages/all-meals-page/AllMeals";
 import DashboardLayout from "../layout/DashboardLayout";
 import UserProfile from "../dashboard-pages/user-profile-page/UserProfile";
+import Private from "./Private";
+import UsersReview from "../dashboard-pages/my-reviews-page/UsersReview";
 
 
 const axiosPublic = useAxiosPublic();
@@ -49,12 +51,16 @@ export const router = createBrowserRouter([
     //dashboard routes
     {
         path: 'dashboard',
-        element: <DashboardLayout />,
+        element: <Private> <DashboardLayout /></Private>,
         errorElement: <ErrorPage />,
         children: [
             {
                 path: 'user-profile',
                 element: <UserProfile />
+            },
+            {
+                path: 'users-review',
+                element: <UsersReview />,
             }
         ]
     }

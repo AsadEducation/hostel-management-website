@@ -1,34 +1,32 @@
-import useAuth from "../../Hooks/useAuth";
+import useUser from "../../Hooks/useUser";
 
 
 const UserProfile = () => {
 
-    const {user} = useAuth();
+    const { users } = useUser('single'); //console.log(users);
 
-    
+    if (!users.length) return <span className="loading loading-bars loading-lg"></span>
+
+    const { name, email, photoUrl, membership } = users[0];
+
     return (
         <div className="flex flex-col items-center mt-10 p-6 bg-base-200 rounded-lg shadow-lg max-w-md mx-auto">
             {/* User Image */}
             <div className="avatar mb-4">
                 <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                    <img src={user.image} alt={`${user.name}'s avatar`} />
+                    <img src={photoUrl} alt={`${name}'s avatar`} />
                 </div>
             </div>
 
             {/* User Name */}
-            <h2 className="text-2xl font-semibold text-primary">{user.name}</h2>
+            <h2 className="text-2xl font-semibold text-primary">{name}</h2>
 
             {/* User Email */}
-            <p className="text-sm text-neutral mt-2">{user.email}</p>
+            <p className="text-sm text-neutral mt-2">{email}</p>
 
             {/* Badges */}
             <div className="mt-6 flex justify-center gap-2">
-                {user.badges.includes("Bronze") && (
-                    <div className="badge badge-warning">Bronze</div>
-                )}
-                {user.badges.includes("Gold") && (
-                    <div className="badge badge-accent">Gold</div>
-                )}
+                <div className="badge badge-warning">{membership}</div>
             </div>
         </div>
     );
