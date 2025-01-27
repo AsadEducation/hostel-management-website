@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const CustomTable = ({ info }) => {
 
-    const { data, refetch, isLoading } = info;
+    const { data, refetch } = info;
 
     if (!data.length) return <div>Data Loading</div>
 
@@ -42,6 +42,18 @@ const CustomTable = ({ info }) => {
 
     }
 
+    const handleMakeAdmin = async (id) => {
+        try {
+            const res = await axiosPublic.patch(`/user/admin/${id}`)
+            if (res.data.modifiedCount) {
+                refetch();
+                Swal.fire({ icon: 'success', title: 'Role Updated' })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className="rounded-lg border border-gray-200 w-[90%] mt-12 lg:mt-16 mx-auto">
             <div className="overflow-x-auto rounded-t-lg">
@@ -55,30 +67,63 @@ const CustomTable = ({ info }) => {
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Review</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 ">Actions</th>
                             </tr>
+                        }
+                        {
                             //if ManageUsers is accessing the table
-
+                            data[0]?.email && <tr>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Email</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Role</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Action</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 ">Status</th>
+                            </tr>
                         }
                     </thead>
 
                     <tbody className="divide-y divide-gray-200">
                         {
                             records.map((record, index) => {
-                                return (
-                                    // if review user is accessing the table 
-                                    record?.meal_name && <tr key={index} >
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{record?.meal_name}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{record?.likes_count}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{record?.reviewText}</td>
-                                        <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
-                                            <Link state={record} to={`/dashboard/review-edit`} className="btn btn-ghost"><FaEdit className="text-blue-500 " /></Link>
-                                            <button onClick={() => handleReviewDelete(record._id)} className="btn btn-ghost"><FaTrash className="text-red-500 " /></button>
-                                            <Link to={`/meal-details/${record.meal_id}`} className="btn btn-ghost">view</Link>
-                                        </td>
-
-                                    </tr>
-                                    //if ManageUsers is accessing the table
-
-                                )
+                                if (record?.meal_name) {
+                                    return (
+                                        // if review user is accessing the table 
+                                        <tr key={index} >
+                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{record?.meal_name}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{record?.likes_count}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{record?.reviewText}</td>
+                                            <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
+                                                <Link state={record} to={`/dashboard/review-edit`} className="btn btn-ghost"><FaEdit className="text-blue-500 " /></Link>
+                                                <button onClick={() => handleReviewDelete(record._id)} className="btn btn-ghost"><FaTrash className="text-red-500 " /></button>
+                                                <Link to={`/meal-details/${record.meal_id}`} className="btn btn-ghost">view</Link>
+                                            </td>
+                                        </tr>
+                                    )
+                                }
+                                if (record?.email) {
+                                    return (
+                                        <tr key={index}>
+                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                                {record?.name}
+                                            </td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                                {record?.email}
+                                            </td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                                {record?.role ? "Admin" : "User"}
+                                            </td>
+                                            <td className="whitespace-nowrap  px-4 py-2 text-gray-700">
+                                                <button
+                                                    onClick={() => handleMakeAdmin(record?._id)}
+                                                    className="btn "
+                                                >
+                                                    Make Admin
+                                                </button>
+                                            </td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                                {record?.subscriptionStatus}
+                                            </td>
+                                        </tr>
+                                    )
+                                }
                             })
                         }
                     </tbody>
