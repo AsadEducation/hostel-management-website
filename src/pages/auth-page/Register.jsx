@@ -31,7 +31,7 @@ const Register = () => {
                 updateUser({ displayName: name, photoURL: photoUrl })
                     .then(result => {
 
-                        axiosPublic.post('/user', { name, email, photoUrl, membership: "Bronze" })
+                        axiosPublic.post('/user', { name, email, photoUrl, membership: "Bronze", role: "user" })
                             .then(res => {
                                 // console.log(res);
                                 if (res.data.insertedId) {

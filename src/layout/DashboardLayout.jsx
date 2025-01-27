@@ -2,6 +2,7 @@ import { CgGift, CgProfile } from "react-icons/cg";
 import { FaBurger, FaPaypal } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import { FaHome } from "react-icons/fa";
 
 
 const DashboardLayout = () => {
@@ -48,11 +49,11 @@ const DashboardLayout = () => {
 
                     <hr />
 
-                    {/* shared links  */}
+                    {/* shared links */}
 
 
-                    {/* <li><NavLink to={`/`}><FaHome />Home</NavLink></li>
-                    <li><NavLink to={'/our-menu'}><FaSearch />Menu</NavLink></li>
+                    <li><NavLink to={`/`}><FaHome />Home</NavLink></li>
+                    {/* <li><NavLink to={'/our-menu'}><FaSearch />Menu</NavLink></li>
                     <li><NavLink to={'/our-shop/salad'}><FaShoppingCart />Shop</NavLink></li>
                     <li><NavLink><FaEnvelope />Contact</NavLink></li> */}
 

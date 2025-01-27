@@ -13,6 +13,7 @@ import DashboardLayout from "../layout/DashboardLayout";
 import UserProfile from "../dashboard-pages/user-profile-page/UserProfile";
 import Private from "./Private";
 import UsersReview from "../dashboard-pages/my-reviews-page/UsersReview";
+import ReviewEdit from "../dashboard-pages/review-edit-page/ReviewEdit";
 
 
 const axiosPublic = useAxiosPublic();
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
             {
                 path: 'users-review',
                 element: <UsersReview />,
+            },
+            {
+                path:'review-edit',
+                element:<ReviewEdit/>
             }
         ]
     }
