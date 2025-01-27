@@ -1,14 +1,14 @@
 import { CgGift, CgProfile } from "react-icons/cg";
-import { FaBurger, FaPaypal } from "react-icons/fa6";
+import { FaBurger, FaPaypal, FaUserGroup } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
-import useAuth from "../Hooks/useAuth";
+
 import { FaHome } from "react-icons/fa";
+import useAdmin from "../Hooks/useAdmin";
 
 
 const DashboardLayout = () => {
 
-    const isAdmin = false;
-    const { user } = useAuth();
+    const { isAdmin } = useAdmin(); console.log('isAdmin from dashboard layout', isAdmin);
 
     return (
         <div className='flex min-h-screen'>
@@ -28,11 +28,8 @@ const DashboardLayout = () => {
 
                             {/* admin links  */}
 
-                            {/* <li><NavLink to={`/dashboard/admin-home`}><CgHome />Admin Home</NavLink></li>
-                            <li><NavLink to={`/dashboard/add-items`}><FaUtensilSpoon />Add Items</NavLink></li>
-                            <li><NavLink to={`/dashboard/manage-items`}><FaList />Manage Items</NavLink></li>
-                            <li><NavLink to={`/dashboard/manage-booking`}><FaBook />Manage Bookings</NavLink></li>
-                            <li><NavLink to={`/dashboard/all-users`}><FaPeopleGroup />All users  ({cart.length})</NavLink></li> */}
+                            <li><NavLink to={`/dashboard/admin-profile`}><CgProfile /><span className="hidden md:block">Admin Profile</span></NavLink></li>
+                            <li><NavLink to={`/dashboard/manage-users`}><FaUserGroup /><span className="hidden md:block">Manage Users</span></NavLink></li>
 
                         </>
                             : <>

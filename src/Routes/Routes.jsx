@@ -14,6 +14,9 @@ import UserProfile from "../dashboard-pages/user-profile-page/UserProfile";
 import Private from "./Private";
 import UsersReview from "../dashboard-pages/my-reviews-page/UsersReview";
 import ReviewEdit from "../dashboard-pages/review-edit-page/ReviewEdit";
+import AdminRoute from "./AdminRoute";
+import AdminProfile from "../dashboard-pages/admin-profile/AdminProfile";
+import ManageUsers from "../dashboard-pages/manage-users/ManageUsers";
 
 
 const axiosPublic = useAxiosPublic();
@@ -55,6 +58,7 @@ export const router = createBrowserRouter([
         element: <Private> <DashboardLayout /></Private>,
         errorElement: <ErrorPage />,
         children: [
+            // user routes 
             {
                 path: 'user-profile',
                 element: <UserProfile />
@@ -64,9 +68,18 @@ export const router = createBrowserRouter([
                 element: <UsersReview />,
             },
             {
-                path:'review-edit',
-                element:<ReviewEdit/>
-            }
+                path: 'review-edit',
+                element: <ReviewEdit />
+            },
+            //admin routes
+            {
+                path: 'admin-profile',
+                element: <AdminRoute><AdminProfile /></AdminRoute>
+            },
+            {
+                path: 'manage-users',
+                element: <AdminRoute><ManageUsers /></AdminRoute>
+            },
         ]
     }
 
