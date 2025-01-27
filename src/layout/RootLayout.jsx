@@ -12,7 +12,7 @@ const RootLayout = () => {
     const authPage = pathname.includes('login') || pathname.includes('register');
 
     return (
-        <div>
+        <div className="w-11/12 mx-auto">
 
             {!authPage && <Navbar />}
 

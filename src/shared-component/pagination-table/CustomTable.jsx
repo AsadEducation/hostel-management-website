@@ -47,28 +47,38 @@ const CustomTable = ({ info }) => {
             <div className="overflow-x-auto rounded-t-lg">
                 <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
                     <thead className="ltr:text-left rtl:text-right">
-                        <tr>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Review</th>
-                            <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 ">Actions</th>
-                        </tr>
+                        {
+                            // if review user is accessing the table 
+                            data[0]?.meal_name && <tr>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Review</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 ">Actions</th>
+                            </tr>
+                            //if ManageUsers is accessing the table
+
+                        }
                     </thead>
 
                     <tbody className="divide-y divide-gray-200">
                         {
-                            records.map((review, index) => {
-                                return <tr key={index} >
-                                    <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{review?.meal_name}</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">{review?.likes_count}</td>
-                                    <td className="whitespace-nowrap px-4 py-2 text-gray-700">{review?.reviewText}</td>
-                                    <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
-                                        <Link state={review} to={`/dashboard/review-edit`} className="btn btn-ghost"><FaEdit className="text-blue-500 " /></Link>
-                                        <button onClick={() => handleReviewDelete(review._id)} className="btn btn-ghost"><FaTrash className="text-red-500 " /></button>
-                                        <Link to={`/meal-details/${review.meal_id}`} className="btn btn-ghost">view</Link>
-                                    </td>
+                            records.map((record, index) => {
+                                return (
+                                    // if review user is accessing the table 
+                                    record?.meal_name && <tr key={index} >
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{record?.meal_name}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{record?.likes_count}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{record?.reviewText}</td>
+                                        <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
+                                            <Link state={record} to={`/dashboard/review-edit`} className="btn btn-ghost"><FaEdit className="text-blue-500 " /></Link>
+                                            <button onClick={() => handleReviewDelete(record._id)} className="btn btn-ghost"><FaTrash className="text-red-500 " /></button>
+                                            <Link to={`/meal-details/${record.meal_id}`} className="btn btn-ghost">view</Link>
+                                        </td>
 
-                                </tr>
+                                    </tr>
+                                    //if ManageUsers is accessing the table
+
+                                )
                             })
                         }
                     </tbody>

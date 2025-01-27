@@ -50,7 +50,7 @@ const Membership = () => {
 
 
     return (
-        <div className="space-y-8 lg:space-y-12">
+        <div className="space-y-8 lg:space-y-12 mt-12 lg:mt-16">
             <h2 className="text-3xl lg:text-4xl font-semibold text-center">Premium Membership</h2>
             <div className="grid grid-cols-1  bg-base-100 md:grid-cols-2 lg:grid-cols-3 w-11/12 mx-auto">
                 {

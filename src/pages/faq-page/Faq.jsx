@@ -2,7 +2,7 @@
 
 const Faq = () => {
     return (
-        <div className="">
+        <div className="mt-12 lg:mt-16">
 
             <h2 className="lg:text-4xl text-3xl text-center mb-8 lg:mb-12 font-semibold">Frequently Asked Questions</h2>
 

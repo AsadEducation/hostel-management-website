@@ -12,12 +12,12 @@ const FeaturedMeals = () => {
     const dinner = meals.filter((each) => each.mealType === "dinner")
 
     return (
-        <div>
+        <div className="mt-12 lg:mt-16">
             <h2 className="text-3xl lg:text-4xl font-semibold text-center ">Featured Meals</h2>
 
             {/* remove the "min-h-screen" class from tab later */}
 
-            <Tabs className={'min-h-screen'}>
+            <Tabs className={``}>
                 <TabList>
                     <Tab>Breakfast</Tab>
                     <Tab>Launch</Tab>
