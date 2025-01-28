@@ -3,10 +3,11 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
 import { FaUtensils } from "react-icons/fa";
 import SectionTitle from "../../shared-component/section-title/SectionTitle";
+import { useLocation } from "react-router-dom";
+import useAuth from '../../Hooks/useAuth'
 
 
-const AddMeal = () => {
-
+const AddOrUpdateMeal = () => {
 
     const {
 
@@ -16,6 +17,20 @@ const AddMeal = () => {
 
     } = useForm();
 
+    const { user, loading } = useAuth();
+
+    if(loading)return <>User Loading ...</>
+
+    const { pathname, state } = useLocation(); //console.log(pathname);
+
+    //checking add Meal or update meal form 
+
+    let isAddForm = true;
+
+    if (pathname.includes('update')) {
+        isAddForm = false;
+
+    }
 
     const axiosPublic = useAxiosPublic();
 
@@ -28,11 +43,11 @@ const AddMeal = () => {
 
     const onsubmit = async (data) => {
 
-        console.log('form data', data);
+        //console.log('form data', data);
 
         // converting ingredients = " " text into an array 
 
-        data.ingredients = data.ingredients.split(','); console.log(data.ingredients);
+        data.ingredients = data.ingredients.split(','); //console.log(data.ingredients);
 
         const {
             name,
@@ -46,7 +61,6 @@ const AddMeal = () => {
             details,
         } = data;
 
-
         const uploadedImage = {
             image: data.image[0]
         }
@@ -56,9 +70,9 @@ const AddMeal = () => {
                 'content-type': 'multipart/form-data'
             }
         })
-        console.log('response back from imagebb', res);
+        //console.log('response back from imagebb', res);
 
-        const display_url = res.data.data.display_url; console.log('display url ', display_url);
+        const display_url = res.data.data.display_url; //console.log('display url ', display_url);
 
         if (display_url) {
 
@@ -68,7 +82,6 @@ const AddMeal = () => {
                 image: display_url,
                 category,
                 price,
-                rating,
                 mealType,
                 distributorName,
                 distributorEmail,
@@ -76,21 +89,23 @@ const AddMeal = () => {
                 postTime,
                 rating: 0,
                 reactionCount: 0,
-        reviews_count:0
+                reviews_count: 0,
             }
 
-            const menuRes = await axiosPublic.post(`/menu`, mealItem);
+            const mealRes = isAddForm ? await axiosPublic.post(`/meals`, mealItem) : await axiosPublic.patch(`/meal/${state?._id}`);
 
-            // console.log('posted message from server', menuRes.data);
+            //console.log('posted message from server', mealRes.data);
 
-            if (menuRes.data.insertedId) {
+            const checkId = isAddForm ? "insertedId" : "modifiedCount";//--------------------problem can cause here
+
+            if (mealRes.data[checkId]) {
 
                 reset()
 
                 Swal.fire({
 
                     icon: 'success',
-                    title: `${data.name} added to the collection successfully`,
+                    title: `Meal ${isAddForm ? 'Added' : 'Updated'}`,
                     timer: 1500,
                     showConfirmButton: false
 
@@ -102,7 +117,7 @@ const AddMeal = () => {
 
     return (
         <div>
-            <SectionTitle title={'Add Food'} />
+            {isAddForm ? <SectionTitle title={'Add Food'} /> : <SectionTitle title={'Update Food'} />}
 
             <div className="md:w-[90%] mx-auto  mt-8 px-2 lg:px-4 py-4 lg:py-6" >
 
@@ -118,6 +133,7 @@ const AddMeal = () => {
                             {...register("name", { required: true })}
                             placeholder="Enter meal name"
                             className="input input-bordered w-full"
+                            defaultValue={isAddForm ? "" : `${state?.name}`}
                         />
                     </div>
 
@@ -132,7 +148,7 @@ const AddMeal = () => {
                                 {...register("category", { required: true })}
                                 className="select block select-bordered"
                             >
-                                <option disabled defaultValue={"Pick a category"}>Pick a category</option>
+                                <option defaultValue={isAddForm ? "Pick One" : `${state?.category}`}>Pick a category</option>
                                 <option value="dessert">Dessert</option>
                                 <option value="salad">Salad</option>
                                 <option value="drinks">Drinks</option>
@@ -150,7 +166,7 @@ const AddMeal = () => {
                                 {...register("mealType", { required: true })}
                                 className="select select-bordered block"
                             >
-                                <option disabled defaultValue={"Pick a meal type"}>Pick a meal type</option>
+                                <option defaultValue={isAddForm ? "Pick One" : `${state?.mealType}`}>Pick a meal type</option>
                                 <option value="breakfast">Breakfast</option>
                                 <option value="lunch">Lunch</option>
                                 <option value="dinner">Dinner</option>
@@ -167,6 +183,7 @@ const AddMeal = () => {
                                 placeholder=""
                                 className="input input-bordered w-full"
                                 step="0.01"
+                                defaultValue={isAddForm ? "" : `${state?.postTime}`}
                             />
                         </div>
                     </div>
@@ -182,6 +199,7 @@ const AddMeal = () => {
                             placeholder="Enter price"
                             className="input input-bordered w-full"
                             step="0.01"
+                            defaultValue={isAddForm ? "" : `${state?.price}`}
                         />
                     </div>
 
@@ -198,6 +216,8 @@ const AddMeal = () => {
                                 {...register("distributorName", { required: true })}
                                 placeholder="Enter distributor name"
                                 className="input input-bordered w-full"
+                                readOnly
+                                defaultValue={isAddForm ? "" : `${state?.distributorName}`}
                             />
                         </div>
                         {/* email  */}
@@ -210,6 +230,8 @@ const AddMeal = () => {
                                 {...register("distributorEmail", { required: true })}
                                 placeholder="ping@pang.com"
                                 className="input input-bordered w-full"
+                                readOnly
+                                defaultValue={`${user?.email}`}
                             />
                         </div>
 
@@ -226,6 +248,7 @@ const AddMeal = () => {
                                 {...register("ingredients", { required: true })}
                                 placeholder="Enter ingredients separated by commas"
                                 className="textarea textarea-bordered block min-h-[12vh] lg:w-[400px]"
+                                defaultValue={isAddForm ? "" : `${state?.ingredients}`}
                             />
                         </div>
 
@@ -238,6 +261,7 @@ const AddMeal = () => {
                                 {...register("details", { required: true })}
                                 placeholder="Enter recipe details"
                                 className="textarea block textarea-bordered min-h-[12vh] lg:w-[400px]"
+                                defaultValue={isAddForm ? "" : `${state?.details}`}
                             />
                         </div>
                     </div>
@@ -256,10 +280,9 @@ const AddMeal = () => {
 
                     {/* Submit Button */}
                     <button className="btn btn-primary w-full">
-                        Add Meal <FaUtensils className="ml-2" />
+                        {isAddForm ? "Add Item" : "Update Item"} <FaUtensils className="ml-2" />
                     </button>
                 </form>
-
 
 
             </div>
@@ -267,5 +290,5 @@ const AddMeal = () => {
     );
 };
 
-export default AddMeal;
+export default AddOrUpdateMeal;
 

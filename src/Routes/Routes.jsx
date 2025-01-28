@@ -19,7 +19,7 @@ import AdminProfile from "../dashboard-pages/admin-profile/AdminProfile";
 import ManageUsers from "../dashboard-pages/manage-users/ManageUsers";
 import AllReviews from "../dashboard-pages/all-reviews-page/AllReviews";
 import AdminAllMeals from "../dashboard-pages/all-meals/AdminAllMeals";
-import AddMeal from "../dashboard-pages/add-meal-admin-page/AddMeal";
+import AddOrUpdateMeal from "../dashboard-pages/add-meal-admin-page/AddOrUpdateMeal";
 
 
 const axiosPublic = useAxiosPublic();
@@ -93,7 +93,11 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'add-meal',
-                element: <AdminRoute><AddMeal /></AdminRoute>
+                element: <AdminRoute><AddOrUpdateMeal /></AdminRoute>
+            },
+            {
+                path: 'update-meal',
+                element: <AdminRoute><AddOrUpdateMeal /></AdminRoute>
             },
         ]
     }
