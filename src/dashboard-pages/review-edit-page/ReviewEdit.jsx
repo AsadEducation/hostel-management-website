@@ -12,7 +12,7 @@ const ReviewEdit = () => {
 
     const handleReviewUpdate = async () => {
 
-        const reviewText = textareaRef.current.value
+        let reviewText = textareaRef.current.value
 
         try {
             const res = await axiosPublic.patch(`/review/${state._id}`, { reviewText });// console.log(res.data);

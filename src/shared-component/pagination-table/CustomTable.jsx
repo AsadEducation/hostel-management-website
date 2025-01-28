@@ -56,6 +56,20 @@ const CustomTable = ({ info }) => {
             console.log(error);
         }
     }
+    const handleMealDelete = async (id) => {
+
+        try {
+            const res = await axiosPublic.delete(`/meal/${id}`)
+            if (res.data.deletedCount) {
+                refetch();
+                Swal.fire({ icon: 'success', title: 'Meal Deleted' })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
 
     return (
         <div className="rounded-lg border border-gray-200 w-[90%] mt-12 lg:mt-16 mx-auto">
@@ -79,6 +93,16 @@ const CustomTable = ({ info }) => {
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Role</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Action</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 ">Status</th>
+                            </tr>
+                        }
+                        {
+                            //if ManageUsers is accessing the table
+                            data[0]?.distributorName && <tr>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Meal Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Rating</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Distributor Name</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Actions</th>
                             </tr>
                         }
                     </thead>
@@ -125,6 +149,26 @@ const CustomTable = ({ info }) => {
                                                 {each?.subscriptionStatus}
                                             </td>
                                         </tr>
+                                    )
+                                }
+                                if (each?.distributorName) {
+                                    return (
+                                        <tr key={index}>
+                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.name}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.reactionCount}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.rating}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.distributorName}</td>
+                                            <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
+                                                <Link state={each} to={`/dashboard/update-meal`} className="btn btn-ghost">
+                                                    <FaEdit className="text-blue-500 " />
+                                                </Link>
+                                                <button onClick={() => handleMealDelete(each?._id)} className="btn btn-ghost">
+                                                    <FaTrash className="text-red-500 " />
+                                                </button>
+                                                <Link to={`/meal-details/${each?._id}`} className="btn btn-ghost">view</Link>
+                                            </td>
+                                        </tr>
+
                                     )
                                 }
                             })
