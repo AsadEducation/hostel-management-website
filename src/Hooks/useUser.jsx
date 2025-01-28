@@ -4,18 +4,18 @@ import useAuth from "./useAuth";
 
 // 3.if you don't pass in the hook , it will load all the user by default 
 
-const useUser = (userType) => {
+const useUser = (userType, searchName, searchMail) => {
     const axiosPublic = useAxiosPublic();
     const { user, loading } = useAuth()
 
     const { data: users = [], isLoading, refetch } = useQuery({
 
-        queryKey: ['users'],
+        queryKey: ['users', searchName, searchMail],
         enabled: !loading,
         queryFn: async () => {
 
             try {
-                const endpoint = userType === 'single' ? `/users?email=${user?.email}` : `/users`;
+                const endpoint = userType === 'single' ? `/users?email=${user?.email}` : `/users?searchName=${searchName}&searchMail=${searchMail}`;
                 const res = await axiosPublic.get(endpoint);
                 return res.data;
             } catch (error) {

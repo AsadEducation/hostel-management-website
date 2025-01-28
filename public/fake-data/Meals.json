@@ -2,7 +2,7 @@
     {
         "name": "Haddock",
         "details": "A mouthwatering chargrilled fresh tuna steak, served medium rare, placed on a classic Niçoise salad with French beans, olives, and cherry tomatoes for a burst of flavor.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg",
         "category": "salad",
         "price": 14.7,
         "rating": 4.5,
@@ -23,7 +23,7 @@
     {
         "name": "Haddock",
         "details": "A perfectly chargrilled fresh tuna steak, served medium rare, accompanied by a delightful classic Niçoise salad with French beans and tangy dressing.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-1-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1598511/pexels-photo-1598511.jpeg",
         "category": "drinks",
         "price": 14.7,
         "rating": 4.2,
@@ -42,7 +42,7 @@
     {
         "name": "Escalope de Veau",
         "details": "A premium roasted duck breast, served pink, alongside creamy gratin potato and a rich, flavorful griottine cherry sauce.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-5-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1608176/pexels-photo-1608176.jpeg",
         "category": "popular",
         "price": 14.5,
         "rating": 4.7,
@@ -60,7 +60,7 @@
     {
         "name": "Escalope de Veau",
         "details": "A delightful pan-roasted haddock fillet wrapped in smoked French bacon, paired with creamy pea purée and a tomato and chive vinaigrette.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1616742/pexels-photo-1616742.jpeg",
         "category": "dessert",
         "price": 12.5,
         "rating": 4.3,
@@ -81,7 +81,7 @@
     {
         "name": "Roast Duck Breast",
         "details": "Tender roasted duck breast, served pink, accompanied by creamy gratin potato and topped with a rich, tangy griottine cherry sauce.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-5-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1623395/pexels-photo-1623395.jpeg",
         "category": "popular",
         "price": 14.5,
         "rating": 4.6,
@@ -99,7 +99,7 @@
     {
         "name": "Escalope de Veau",
         "details": "Pan-roasted haddock fillet delicately wrapped in smoked French bacon, served with a vibrant pea purée and tangy tomato chive vinaigrette.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1633177/pexels-photo-1633177.jpeg",
         "category": "dessert",
         "price": 12.5,
         "rating": 4.0,
@@ -120,7 +120,7 @@
     {
         "name": "Escalope de Veau",
         "details": "Pan-roasted haddock fillet, smoked French bacon wrapping adds a crispy touch, served with a pea purée and a tomato vinaigrette.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1648347/pexels-photo-1648347.jpeg",
         "category": "pizza",
         "price": 12.5,
         "rating": 4.2,
@@ -140,7 +140,7 @@
     {
         "name": "Breton Fish Stew",
         "details": "A hearty chargrilled chicken dish, served with fresh avocado, baby gem lettuce, shallots, French beans, walnuts, and mustard dressing.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-8-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1651286/pexels-photo-1651286.jpeg",
         "category": "pizza",
         "price": 12.9,
         "rating": 4.4,
@@ -162,7 +162,7 @@
     {
         "name": "Chicken and Walnut Salad",
         "details": "Pan-roasted pork belly served with gratin potato, braised Savoy cabbage, sweet apples, aromatic thyme, and a rich calvados jus.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1666200/pexels-photo-1666200.jpeg",
         "category": "salad",
         "price": 13.5,
         "rating": 4.1,
@@ -183,7 +183,7 @@
     {
         "name": "Escalope de Veau",
         "details": "Haddock fillet roasted to perfection, wrapped in crispy smoked French bacon, complemented by pea purée and tomato vinaigrette.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1675671/pexels-photo-1675671.jpeg",
         "category": "soup",
         "price": 12.5,
         "rating": 4.3,
@@ -203,7 +203,7 @@
     {
         "name": "Chicken and Walnut Salad",
         "details": "A tender pan-roasted pork belly served with creamy gratin potato, braised Savoy cabbage, fresh apples, thyme, and calvados jus.",
-        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
+        "image": "https://images.pexels.com/photos/1685184/pexels-photo-1685184.jpeg",
         "category": "dessert",
         "price": 13.5,
         "rating": 4.5,
