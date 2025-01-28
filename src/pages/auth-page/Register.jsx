@@ -48,6 +48,7 @@ const Register = () => {
                                 }
 
                                 Swal.fire({ icon: 'warning', title: 'User Already Exists please login' })
+                                navigate('/login');
 
                             })
 

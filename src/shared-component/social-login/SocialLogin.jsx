@@ -29,10 +29,11 @@ const SocialLogin = () => {
                 // console.log(res);
 
                 if (res.data.insertedId) {
-                    Swal.fire({ icon: 'success', title: 'Google Login successful' });
+                    Swal.fire({ icon: 'success', title: 'Google Login is Success' });
                     navigate('/');
                 }
-
+                Swal.fire({ icon: 'success', title: 'User Already Exists' });
+                navigate('/');
             }
         } catch (err) {
             console.log(err);

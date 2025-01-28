@@ -11,7 +11,7 @@ const CustomTable = ({ info }) => {
 
     const { data, refetch } = info; //console.log(data)
 
-    if (!data || !data.length) return <div className="flex w-52 flex-col gap-4">
+    if (!data || !data.length) return <div className="flex w-52 flex-col min-w-screen min-h-screen mx-auto my-auto gap-4">
         <div className="skeleton h-32 w-full"></div>
         <div className="skeleton h-4 w-28"></div>
         <div className="skeleton h-4 w-full"></div>
