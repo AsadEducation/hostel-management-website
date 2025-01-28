@@ -2,10 +2,12 @@ import { useState } from "react";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 const CustomTable = ({ info }) => {
+
+    // const { pathname } = useLocation(); console.log(pathname);
 
     const { data, refetch } = info; //console.log(data)
 
@@ -100,6 +102,7 @@ const CustomTable = ({ info }) => {
                             data[0]?.distributorName && <tr>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Meal Title</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Review Count</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Rating</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Distributor Name</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Actions</th>
@@ -156,6 +159,7 @@ const CustomTable = ({ info }) => {
                                         <tr key={index}>
                                             <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.name}</td>
                                             <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.reactionCount}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.reviews_count}</td>
                                             <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.rating}</td>
                                             <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.distributorName}</td>
                                             <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">

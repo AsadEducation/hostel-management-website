@@ -17,7 +17,8 @@
             "Dressing"
         ],
         "postTime": "2025-01-23",
-        "reviews_count": 120
+        "reviews_count": 120,
+        "reactionCount": 387
     },
     {
         "name": "Haddock",
@@ -35,7 +36,8 @@
             "Dressing"
         ],
         "postTime": "2025-01-24",
-        "reviews_count": 85
+        "reviews_count": 85,
+        "reactionCount": 254
     },
     {
         "name": "Escalope de Veau",
@@ -52,7 +54,8 @@
             "Griottine cherry sauce"
         ],
         "postTime": "2025-01-22",
-        "reviews_count": 150
+        "reviews_count": 150,
+        "reactionCount": 432
     },
     {
         "name": "Escalope de Veau",
@@ -72,7 +75,8 @@
             "Vinaigrette"
         ],
         "postTime": "2025-01-21",
-        "reviews_count": 92
+        "reviews_count": 92,
+        "reactionCount": 128
     },
     {
         "name": "Roast Duck Breast",
@@ -89,7 +93,8 @@
             "Griottine cherry sauce"
         ],
         "postTime": "2025-01-25",
-        "reviews_count": 115
+        "reviews_count": 115,
+        "reactionCount": 351
     },
     {
         "name": "Escalope de Veau",
@@ -109,7 +114,8 @@
             "Vinaigrette"
         ],
         "postTime": "2025-01-20",
-        "reviews_count": 105
+        "reviews_count": 105,
+        "reactionCount": 472
     },
     {
         "name": "Escalope de Veau",
@@ -128,7 +134,8 @@
             "Vinaigrette"
         ],
         "postTime": "2025-01-18",
-        "reviews_count": 80
+        "reviews_count": 80,
+        "reactionCount": 219
     },
     {
         "name": "Breton Fish Stew",
@@ -149,7 +156,8 @@
             "Mustard dressing"
         ],
         "postTime": "2025-01-16",
-        "reviews_count": 135
+        "reviews_count": 135,
+        "reactionCount": 495
     },
     {
         "name": "Chicken and Walnut Salad",
@@ -169,7 +177,8 @@
             "Calvados jus"
         ],
         "postTime": "2025-01-14",
-        "reviews_count": 65
+        "reviews_count": 65,
+        "reactionCount": 178
     },
     {
         "name": "Escalope de Veau",
@@ -188,7 +197,8 @@
             "Vinaigrette"
         ],
         "postTime": "2025-01-12",
-        "reviews_count": 110
+        "reviews_count": 110,
+        "reactionCount": 317
     },
     {
         "name": "Chicken and Walnut Salad",
@@ -208,6 +218,7 @@
             "Calvados jus"
         ],
         "postTime": "2025-01-11",
-        "reviews_count": 140
+        "reviews_count": 140,
+        "reactionCount": 456
     }
 ]

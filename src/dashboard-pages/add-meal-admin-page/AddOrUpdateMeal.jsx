@@ -162,7 +162,7 @@ const AddOrUpdateMeal = () => {
                             <label className="label">
                                 <span className="label-text font-medium">*Meal Type</span>
                             </label>
-                            <select
+                            <selecta
                                 {...register("mealType", { required: true })}
                                 className="select select-bordered block"
                             >
@@ -170,7 +170,7 @@ const AddOrUpdateMeal = () => {
                                 <option value="breakfast">Breakfast</option>
                                 <option value="lunch">Lunch</option>
                                 <option value="dinner">Dinner</option>
-                            </select>
+                            </selecta>
                         </div>
                         {/* post time input  */}
                         <div className="form-control">

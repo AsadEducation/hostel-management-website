@@ -2,8 +2,9 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
 
-    baseURL: 'http://localhost:5000',
-
+    baseURL: window.location.hostname === 'localhost'
+        ? 'http://localhost:5000'
+        : 'https://hostel-management-server-delta.vercel.app',
 })
 
 export const useAxiosPublic = () => {
