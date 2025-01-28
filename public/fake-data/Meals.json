@@ -16,7 +16,8 @@
             "Salad greens",
             "Dressing"
         ],
-        "postTime": "2025-01-24T12:00:00Z"
+        "postTime": "2025-01-23",
+        "reviews_count": 120
     },
     {
         "name": "Haddock",
@@ -33,7 +34,8 @@
             "Salad greens",
             "Dressing"
         ],
-        "postTime": "2025-01-24T12:30:00Z"
+        "postTime": "2025-01-24",
+        "reviews_count": 85
     },
     {
         "name": "Escalope de Veau",
@@ -49,7 +51,8 @@
             "Gratin potato",
             "Griottine cherry sauce"
         ],
-        "postTime": "2025-01-24T13:00:00Z"
+        "postTime": "2025-01-22",
+        "reviews_count": 150
     },
     {
         "name": "Escalope de Veau",
@@ -68,7 +71,8 @@
             "Chives",
             "Vinaigrette"
         ],
-        "postTime": "2025-01-24T13:30:00Z"
+        "postTime": "2025-01-21",
+        "reviews_count": 92
     },
     {
         "name": "Roast Duck Breast",
@@ -84,7 +88,8 @@
             "Gratin potato",
             "Griottine cherry sauce"
         ],
-        "postTime": "2025-01-24T14:00:00Z"
+        "postTime": "2025-01-25",
+        "reviews_count": 115
     },
     {
         "name": "Escalope de Veau",
@@ -103,7 +108,8 @@
             "Chives",
             "Vinaigrette"
         ],
-        "postTime": "2025-01-24T14:30:00Z"
+        "postTime": "2025-01-20",
+        "reviews_count": 105
     },
     {
         "name": "Escalope de Veau",
@@ -121,7 +127,8 @@
             "Tomato",
             "Vinaigrette"
         ],
-        "postTime": "2025-01-24T15:00:00Z"
+        "postTime": "2025-01-18",
+        "reviews_count": 80
     },
     {
         "name": "Breton Fish Stew",
@@ -141,7 +148,8 @@
             "Walnuts",
             "Mustard dressing"
         ],
-        "postTime": "2025-01-24T15:30:00Z"
+        "postTime": "2025-01-16",
+        "reviews_count": 135
     },
     {
         "name": "Chicken and Walnut Salad",
@@ -160,7 +168,8 @@
             "Thyme",
             "Calvados jus"
         ],
-        "postTime": "2025-01-24T16:00:00Z"
+        "postTime": "2025-01-14",
+        "reviews_count": 65
     },
     {
         "name": "Escalope de Veau",
@@ -178,7 +187,8 @@
             "Tomato",
             "Vinaigrette"
         ],
-        "postTime": "2025-01-24T16:30:00Z"
+        "postTime": "2025-01-12",
+        "reviews_count": 110
     },
     {
         "name": "Chicken and Walnut Salad",
@@ -197,6 +207,7 @@
             "Thyme",
             "Calvados jus"
         ],
-        "postTime": "2025-01-24T17:00:00Z"
+        "postTime": "2025-01-11",
+        "reviews_count": 140
     }
 ]
