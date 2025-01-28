@@ -19,7 +19,7 @@ const AddOrUpdateMeal = () => {
 
     const { user, loading } = useAuth();
 
-    if(loading)return <>User Loading ...</>
+    if (loading) return <>User Loading ...</>
 
     const { pathname, state } = useLocation(); //console.log(pathname);
 
@@ -217,7 +217,7 @@ const AddOrUpdateMeal = () => {
                                 placeholder="Enter distributor name"
                                 className="input input-bordered w-full"
                                 readOnly
-                                defaultValue={isAddForm ? "" : `${state?.distributorName}`}
+                                defaultValue={isAddForm ? `${user?.displayName}` : `${state?.distributorName}`}
                             />
                         </div>
                         {/* email  */}
@@ -231,7 +231,7 @@ const AddOrUpdateMeal = () => {
                                 placeholder="ping@pang.com"
                                 className="input input-bordered w-full"
                                 readOnly
-                                defaultValue={`${user?.email}`}
+                                defaultValue={isAddForm ? `${user?.email}` : `${state?.email}`}
                             />
                         </div>
 

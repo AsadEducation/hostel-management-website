@@ -15,7 +15,7 @@ const CustomTable = ({ info }) => {
     //---------------------------------------------------pagination related starts-------------------------------------------
     //all the things related to calculation of page
     const [currentPage, setCurrentPage] = useState(0);
-    const recordsPerPage = 5;
+    const recordsPerPage = 10;
 
     const firstIndex = currentPage * recordsPerPage;
     const lastIndex = firstIndex + recordsPerPage;
