@@ -54,9 +54,6 @@ The **Hostel Management System** is a web application built using the **MERN sta
 
 ---
 
-## 🌐 Live Site URL
-[🌍 Visit the Live Site](https://hostel-management-32.web.app/)
-
 ---
 
 ## 🔗 Additional Resources
