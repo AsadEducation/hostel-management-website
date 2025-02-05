@@ -5,6 +5,7 @@ import { FaUtensils } from "react-icons/fa";
 import SectionTitle from "../../shared-component/section-title/SectionTitle";
 import { useLocation } from "react-router-dom";
 import useAuth from '../../Hooks/useAuth'
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 
 const AddOrUpdateMeal = () => {
@@ -21,9 +22,9 @@ const AddOrUpdateMeal = () => {
 
     if (loading) return <>User Loading ...</>
 
-    const { pathname, state } = useLocation(); //console.log(pathname);
+    const { pathname, state } = useLocation(); console.log(pathname);
 
-    //checking add Meal or update meal form 
+    //checking which routes is it?  add Meal or update meal form 
 
     let isAddForm = true;
 
@@ -31,8 +32,11 @@ const AddOrUpdateMeal = () => {
         isAddForm = false;
 
     }
+    let isUpcoming = false;
+    if (pathname.includes('upcoming')) isUpcoming = true; //console.log('is upcoming', isUpcoming);
 
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
 
     //retrieving image key from .env file 
@@ -47,7 +51,7 @@ const AddOrUpdateMeal = () => {
 
         // converting ingredients = " " text into an array 
 
-        data.ingredients = data.ingredients.split(','); //console.log(data.ingredients);
+        data.ingredients = data.ingredients.split(/,\s*|\s+/); //console.log(data.ingredients);
 
         const {
             name,
@@ -81,7 +85,7 @@ const AddOrUpdateMeal = () => {
                 details,
                 image: display_url,
                 category,
-                price,
+                price: parseFloat(price),
                 mealType,
                 distributorName,
                 distributorEmail,
@@ -92,8 +96,8 @@ const AddOrUpdateMeal = () => {
                 reviews_count: 0,
             }
 
-            const mealRes = isAddForm ? await axiosPublic.post(`/meals`, mealItem) : await axiosPublic.patch(`/meal/${state?._id}`);
-
+            const mealRes = isAddForm ? isUpcoming ? await axiosSecure.post(`/upcoming`, mealItem) : await axiosSecure.post(`/meals`, mealItem) : await axiosSecure.patch(`/meal/${state?._id}`);
+            
             //console.log('posted message from server', mealRes.data);
 
             const checkId = isAddForm ? "insertedId" : "modifiedCount";//--------------------problem can cause here
@@ -105,7 +109,7 @@ const AddOrUpdateMeal = () => {
                 Swal.fire({
 
                     icon: 'success',
-                    title: `Meal ${isAddForm ? 'Added' : 'Updated'}`,
+                    title: `Meal ${isAddForm ? isUpcoming ? 'Upcoming Meal Added' : 'Added' : 'Updated'}`,
                     timer: 1500,
                     showConfirmButton: false
 
@@ -117,7 +121,7 @@ const AddOrUpdateMeal = () => {
 
     return (
         <div>
-            {isAddForm ? <SectionTitle title={'Add Food'} /> : <SectionTitle title={'Update Food'} />}
+            {isAddForm ? <SectionTitle title={`Add ${isUpcoming ? "Upcoming" : "Meal"}`} /> : <SectionTitle title={'Update Food'} />}
 
             <div className="md:w-[90%] mx-auto  mt-8 px-2 lg:px-4 py-4 lg:py-6" >
 
@@ -162,7 +166,7 @@ const AddOrUpdateMeal = () => {
                             <label className="label">
                                 <span className="label-text font-medium">*Meal Type</span>
                             </label>
-                            <selecta
+                            <select
                                 {...register("mealType", { required: true })}
                                 className="select select-bordered block"
                             >
@@ -170,7 +174,7 @@ const AddOrUpdateMeal = () => {
                                 <option value="breakfast">Breakfast</option>
                                 <option value="lunch">Lunch</option>
                                 <option value="dinner">Dinner</option>
-                            </selecta>
+                            </select>
                         </div>
                         {/* post time input  */}
                         <div className="form-control">

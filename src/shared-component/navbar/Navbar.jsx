@@ -15,7 +15,6 @@ const Navbar = () => {
         <li><NavLink to={`/meals`} >Meals</NavLink></li>
         <li><NavLink to={`/upcoming-meals`} >Upcoming Meals</NavLink></li>
 
-
     </>
 
     const handleLogout = () => {

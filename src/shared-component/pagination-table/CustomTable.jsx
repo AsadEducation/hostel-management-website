@@ -3,20 +3,38 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { Link, useLocation } from "react-router-dom";
+import Skeleton from "../skeleton-loader/Skeleton";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { handleMealPublish } from "../../utility-functions/util";
+
 
 
 const CustomTable = ({ info }) => {
 
-    // const { pathname } = useLocation(); console.log(pathname);
+    const { pathname } = useLocation(); //console.log(pathname);
 
     const { data, refetch } = info; //console.log(data)
 
-    if (!data || !data.length) return <div className="flex w-52 flex-col min-w-screen min-h-screen mx-auto my-auto gap-4">
-        <div className="skeleton h-32 w-full"></div>
-        <div className="skeleton h-4 w-28"></div>
-        <div className="skeleton h-4 w-full"></div>
-        <div className="skeleton h-4 w-full"></div>
-    </div>
+    if (!data || !data.length) return <Skeleton />
+
+    //checking upcoming meals route or not
+    let isReview = false;
+    if (pathname.includes('review')) isReview = true; //console.log('is upcoming',isUpcoming)
+    //checking upcoming meals route or not
+    let isUpcoming = false;
+    if (pathname.includes('upcoming')) isUpcoming = true; //console.log('is upcoming',isUpcoming)
+    //checking all meals route or not
+    let isAllMeals = false;
+    if (pathname.includes('all-meals')) isAllMeals = true;
+    //checking payment route or not
+    let isPayment = false;
+    if (pathname.includes('payment')) isPayment = true;
+    //checking requested meal route or not 
+    let isRequested = false;
+    if (pathname.includes('requested')) isRequested = true;
+    //checking serve meal route or not 
+    let isServeMeal = false;
+    if (pathname.includes('serve')) isServeMeal = true; console.log('is serve meal', isServeMeal);
 
 
     //---------------------------------------------------pagination related starts-------------------------------------------
@@ -37,11 +55,12 @@ const CustomTable = ({ info }) => {
     // ---------------------------------------------------pagination related ends-----------------------------------------------
 
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const handleReviewDelete = async (id) => {
 
         try {
-            const res = await axiosPublic.delete(`/review/${id}`)
+            const res = await axiosSecure.delete(`/review/${id}`)
             if (res.data.deletedCount) {
                 refetch();
                 Swal.fire({ icon: 'success', title: 'Review Deleted' })
@@ -54,7 +73,7 @@ const CustomTable = ({ info }) => {
 
     const handleMakeAdmin = async (id) => {
         try {
-            const res = await axiosPublic.patch(`/user/admin/${id}`)
+            const res = await axiosSecure.patch(`/user/admin/${id}`)
             if (res.data.modifiedCount) {
                 refetch();
                 Swal.fire({ icon: 'success', title: 'Role Updated' })
@@ -66,7 +85,7 @@ const CustomTable = ({ info }) => {
     const handleMealDelete = async (id) => {
 
         try {
-            const res = await axiosPublic.delete(`/meal/${id}`)
+            const res = await axiosSecure.delete(`/meal/${id}`)
             if (res.data.deletedCount) {
                 refetch();
                 Swal.fire({ icon: 'success', title: 'Meal Deleted' })
@@ -75,6 +94,53 @@ const CustomTable = ({ info }) => {
             console.log(error);
         }
 
+    }
+    // const handleMealPublish = async (each) => {
+    //     //console.log(id);
+    //     try {
+
+    //         const deleteRes = await axiosSecure.delete(`/upcoming/${each?._id}`);
+
+    //         if (deleteRes.data.deletedCount) {
+
+    //             //deleting id because it will create problem while inserting in mongodb
+    //             delete each._id; //console.log('for security checking item', each)
+
+    //             const addRes = await axiosSecure.post(`/meals`, each);
+
+    //             if (addRes.data.insertedId) {
+    //                 refetch();
+    //                 Swal.fire({ icon: "success", title: "Meal Published" })
+    //             }
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+
+    // }
+    const handleRequestDelete = async (id) => {
+
+        try {
+            const res = await axiosSecure.delete(`/requested-meal/${id}`); console.log(res);
+            if (res.data.deletedCount) {
+                refetch();
+                Swal.fire({ icon: 'success', title: ' Request canceled' })
+            }
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+    const handleMealServe = async (id) => {
+        try {
+            const res = await axiosSecure.patch(`/requested-meal/${id}`); console.log(res.data);
+            if (res.data.modifiedCount) {
+                refetch();
+                Swal.fire({ icon: 'success', title: 'Meal Delivered' })
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 
@@ -85,7 +151,7 @@ const CustomTable = ({ info }) => {
                     <thead className="ltr:text-left rtl:text-right">
                         {
                             // if review user is accessing the table 
-                            data[0]?.meal_id && <tr>
+                            isReview && <tr>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Review</th>
@@ -104,7 +170,7 @@ const CustomTable = ({ info }) => {
                         }
                         {
                             //if ManageUsers is accessing the table
-                            data[0]?.distributorName && <tr>
+                            isAllMeals && <tr>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Meal Title</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Review Count</th>
@@ -113,12 +179,48 @@ const CustomTable = ({ info }) => {
                                 <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Actions</th>
                             </tr>
                         }
+                        {
+                            isUpcoming && <tr>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Meal Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Image</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Actions</th>
+                            </tr>
+
+                        }
+                        {
+                            isPayment && <tr>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Email</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Price</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">TransactionId</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Time</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">status</th>
+                            </tr>
+                        }
+                        {
+                            isRequested && <tr>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Reviews Count</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">status</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Action</th>
+                            </tr>
+                        }
+                        {
+                            isServeMeal && <tr>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">User Name</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">User Email</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">status</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Action</th>
+                            </tr>
+                        }
                     </thead>
 
                     <tbody className="divide-y divide-gray-200">
                         {
                             records.map((each, index) => {
-                                if (each?.meal_id) {
+                                if (isReview) {
                                     return (
                                         // if review user is accessing the table 
                                         <tr key={index} >
@@ -153,13 +255,13 @@ const CustomTable = ({ info }) => {
                                                     Make Admin
                                                 </button>
                                             </td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                                                {each?.subscriptionStatus}
+                                            <td className={`whitespace-nowrap px-4 py-2 text-gray-700 ${each?.membership == 'Bronze' ? 'text-yellow-700' : 'text-red-600'}`}>
+                                                {each?.membership}
                                             </td>
                                         </tr>
                                     )
                                 }
-                                if (each?.distributorName) {
+                                if (isAllMeals) {
                                     return (
                                         <tr key={index}>
                                             <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.name}</td>
@@ -179,6 +281,69 @@ const CustomTable = ({ info }) => {
                                         </tr>
 
                                     )
+                                }
+                                if (isUpcoming) {
+                                    return <tr key={index}>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.name}</td>
+
+                                        <td className="whitespace-nowrap px-4 py-2">
+                                            <div className="avatar">
+                                                <div className="mask mask-squircle h-12 w-12">
+                                                    <img
+                                                        src={each?.image}
+                                                        alt="Avatar Tailwind CSS Component" />
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.reactionCount}</td>
+
+                                        <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
+                                            {/* publish button  */}
+                                            <button onClick={() => handleMealPublish(each, axiosSecure, refetch)} className="btn btn-primary">Publish</button>
+                                            {/* upcoming meal add Link */}
+                                            <Link state={each} to={`/dashboard/add-upcoming`} className="btn btn-primary">
+                                                Add
+                                            </Link>
+                                        </td>
+                                    </tr>
+                                }
+                                if (isPayment) {
+                                    return <tr key={index}>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.user_email}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.price}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-blue-500">{each?.transactionId}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.payment_date}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-green-600">{each?.status}</td>
+                                    </tr>
+                                }
+                                if (isRequested) {
+                                    return <tr key={index}>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.meal_name}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.reactionCount}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-blue-500">{each?.reviews_count}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-yellow-400">{each?.status}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            <button onClick={() => handleRequestDelete(each?._id)} className="btn btn-error text-white">
+                                                Cancel
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                }
+                                if (isServeMeal) {
+                                    return <tr key={index}>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.meal_name}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.user_name}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.user_email}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-yellow-400">{each?.status}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            <button onClick={() => handleMealServe(each?._id)} className="btn btn-success text-white">
+                                                {each?.status == "pending" ? "Serve" : "Served"}
+                                            </button>
+                                        </td>
+
+                                    </tr>
                                 }
                             })
                         }

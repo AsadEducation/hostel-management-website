@@ -3,7 +3,7 @@ import useUser from "../../Hooks/useUser";
 
 const UserProfile = () => {
 
-    const { users } = useUser('single'); //console.log(users);
+    const { users } = useUser('single'); console.log(users);
 
     if (!users.length) return <span className="loading loading-bars loading-lg"></span>
 

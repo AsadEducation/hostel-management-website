@@ -1,21 +1,21 @@
 import { useRef } from "react";
 import { useLocation } from "react-router-dom";
-import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../Hooks/useAxiosSecure";
 
 const ReviewEdit = () => {
 
     const { state } = useLocation();
 
     const textareaRef = useRef();
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     const handleReviewUpdate = async () => {
 
         let reviewText = textareaRef.current.value
 
         try {
-            const res = await axiosPublic.patch(`/review/${state._id}`, { reviewText });// console.log(res.data);
+            const res = await axiosSecure.patch(`/review/${state._id}`, { reviewText });// console.log(res.data);
 
             if (res.data.modifiedCount) {
                 Swal.fire({ icon: 'success', title: 'review updated' })

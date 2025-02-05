@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const Membership = () => {
@@ -55,7 +56,7 @@ const Membership = () => {
             <div className="grid grid-cols-1  bg-base-100 md:grid-cols-2 lg:grid-cols-3 w-11/12 mx-auto">
                 {
                     membershipCards.map((card, index) => {
-                        return <div key={index} className="card w-96 flex flex-col bg-base-100 shadow-sm">
+                        return <div key={index} className="card w-full mt-2 lg:w-[23vw] flex flex-col bg-base-100 shadow-sm">
                             <div className="card-body">
                                 <span className="badge badge-xs badge-warning">Most Popular</span>
                                 <div className="flex justify-between">
@@ -89,7 +90,9 @@ const Membership = () => {
 
                                 </ul>
                                 <div className="mt-6">
-                                    <button className="btn btn-primary btn-block">Subscribe</button>
+                                    <Link state={card} to={`payment/${card?.name}`}>
+                                        <button className="btn btn-primary btn-block">Subscribe</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

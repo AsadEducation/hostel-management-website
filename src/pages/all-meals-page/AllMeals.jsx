@@ -1,26 +1,28 @@
 import { useState } from "react";
 import useMeal from "../../Hooks/useMeal";
 import FoodGrid from "../../shared-component/food-grid/FoodGrid";
+import SectionTitle from "../../shared-component/section-title/SectionTitle";
+import Skeleton from "../../shared-component/skeleton-loader/Skeleton";
 
 
 const AllMeals = () => {
 
-    const [search, setSearch] = useState('');
-    const [category, setCategory] = useState("");
-    const [min, setMin] = useState(0);
-    const [max, setMax] = useState(50);
+    const [search, setSearch] = useState(undefined);
+    const [category, setCategory] = useState(undefined);
+    const [min, setMin] = useState(undefined);
+    const [max, setMax] = useState(undefined);
     const { meals, isLoading } = useMeal(search, category, min, max);
 
     // console.log(meals);
 
-    if (isLoading) <progress className="progress w-56"></progress>
+    if (isLoading) <Skeleton />
 
     return (
-        <div className="mt-12 lg:mt-16 space-y-8 lg:space-y-12">
+        <div className="mt-8 lg:mt-12 space-y-8 lg:space-y-12">
 
-            <h2 className="text-3xl lg:text-4xl text-center font-semibold">All Meals</h2>
+            <SectionTitle title={"All Meals"} />
 
-            <div className="mx-auto w-11/12 flex items-center justify-between">
+            <div className="mx-auto w-11/12 lg:flex items-center justify-between">
 
                 {/* search field  */}
 
@@ -56,18 +58,18 @@ const AllMeals = () => {
 
                 {/* filter by price range  */}
 
-                <div className="flex flex-col lg:flex-row gap-4 items-center">
+                <div className="flex flex-col lg:flex-row gap-4 items-center mt-2">
 
 
                     {/* Min Price Input */}
                     <div className="flex items-center gap-2">
-                        <label className="text-sm font-medium text-gray-600">Min:</label>
+                        <label className="text-sm font-medium  text-gray-600">Min:</label>
                         <input
                             type="number"
                             placeholder="Min Price"
                             className="input input-bordered w-32"
                             onChange={(e) => {
-                                const minPrice = e.target.value
+                                const minPrice = e.target.value; //console.log(minPrice);
                                 setMin(minPrice);
                             }}
                         />

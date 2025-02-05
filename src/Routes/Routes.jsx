@@ -20,6 +20,12 @@ import ManageUsers from "../dashboard-pages/manage-users/ManageUsers";
 import AllReviews from "../dashboard-pages/all-reviews-page/AllReviews";
 import AdminAllMeals from "../dashboard-pages/all-meals/AdminAllMeals";
 import AddOrUpdateMeal from "../dashboard-pages/add-meal-admin-page/AddOrUpdateMeal";
+import UpcomingMeals from "../pages/upcoming-meals-page/UpcomingMeals";
+import AdminAllUpcoming from "../dashboard-pages/all-upcoming-meals/AdminAllUpcoming";
+import Payment from "../pages/checkout-page/Payment";
+import PaymentHistory from "../dashboard-pages/payment-history/PaymentHistory";
+import RequestedMeal from "../dashboard-pages/requested-meal/RequestedMeal";
+import ServeMeal from "../dashboard-pages/adimin-server-meal/ServeMeal";
 
 
 const axiosPublic = useAxiosPublic();
@@ -41,9 +47,17 @@ export const router = createBrowserRouter([
                 element: <AllMeals />
             },
             {
+                path: 'upcoming-meals',
+                element: <UpcomingMeals />,
+            },
+            {
                 path: 'meal-details/:id',
                 element: <MealDetails />,
                 loader: ({ params }) => axiosPublic.get(`/meals/${params.id}`)
+            },
+            {
+                path: 'payment/:package',
+                element: <Private><Payment /></Private>,
             },
             {
                 path: 'login',
@@ -74,6 +88,14 @@ export const router = createBrowserRouter([
                 path: 'review-edit',
                 element: <ReviewEdit />
             },
+            {
+                path: 'payment-history',
+                element: <PaymentHistory />
+            },
+            {
+                path: 'requested-meal',
+                element: <RequestedMeal />
+            },
             //admin routes
             {
                 path: 'admin-profile',
@@ -98,6 +120,18 @@ export const router = createBrowserRouter([
             {
                 path: 'update-meal',
                 element: <AdminRoute><AddOrUpdateMeal /></AdminRoute>
+            },
+            {
+                path: 'all-upcoming',
+                element: <AdminRoute><AdminAllUpcoming /></AdminRoute>
+            },
+            {
+                path: 'add-upcoming',
+                element: <AdminRoute><AddOrUpdateMeal /></AdminRoute>
+            },
+            {
+                path: 'serve-meal',
+                element: <AdminRoute><ServeMeal /></AdminRoute>
             },
         ]
     }

@@ -1,11 +1,11 @@
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { useNavigate } from "react-router-dom";
 
 
-const SocialLogin = () => {
-
+const SocialLogin = ({ desiredRoute }) => {
+    console.log(desiredRoute);
     const { googleLogin } = useAuth();
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
@@ -24,6 +24,7 @@ const SocialLogin = () => {
                     email: result.user?.email,
                     photoUrl: result.user?.photoURL,
                     membership: "Bronze",
+                    role: "user",
                 });
 
                 // console.log(res);
@@ -33,7 +34,7 @@ const SocialLogin = () => {
                     navigate('/');
                 }
                 Swal.fire({ icon: 'success', title: 'User Already Exists' });
-                navigate('/');
+                navigate(desiredRoute);
             }
         } catch (err) {
             console.log(err);

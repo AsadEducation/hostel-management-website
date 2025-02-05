@@ -13,7 +13,7 @@ const Login = () => {
     const { loginUser } = useAuth();//loading auth functions using useAuth hook
     const navigate = useNavigate();
     const { state } = useLocation();
-    const desiredRoute = state || '/';
+    const desiredRoute = state || '/'; console.log(desiredRoute);
 
 
     // function for loading captcha 
@@ -143,7 +143,7 @@ const Login = () => {
                 {/* social login entry point */}
 
                 <div className='w-[50%] mx-auto'>
-                    <SocialLogin />
+                    <SocialLogin desiredRoute={desiredRoute} />
                 </div>
 
             </div>

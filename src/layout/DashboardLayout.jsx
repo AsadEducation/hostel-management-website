@@ -1,9 +1,10 @@
 import { CgAdd, CgGift, CgProfile } from "react-icons/cg";
 import { FaBurger, FaPaypal, FaUserGroup } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
-
+import { PiBowlFood } from "react-icons/pi";
 import { FaGift, FaHome } from "react-icons/fa";
 import useAdmin from "../Hooks/useAdmin";
+import { MdOutlineUpcoming } from "react-icons/md";
 
 
 const DashboardLayout = () => {
@@ -24,6 +25,8 @@ const DashboardLayout = () => {
                             <li><NavLink to={`/dashboard/all-reviews`}><FaGift /><span className="hidden md:block">All Reviews</span></NavLink></li>
                             <li><NavLink to={`/dashboard/all-meals`}><FaBurger /><span className="hidden md:block">All Meals</span></NavLink></li>
                             <li><NavLink to={`/dashboard/add-meal`}><CgAdd /><span className="hidden md:block">Add Meal</span></NavLink></li>
+                            <li><NavLink to={`/dashboard/all-upcoming`}><MdOutlineUpcoming /><span className="hidden md:block">Meals Upcoming</span></NavLink></li>
+                            <li><NavLink to={`/dashboard/serve-meal`}><PiBowlFood /><span className="hidden md:block">Serve Meal</span></NavLink></li>
                         </>
                             : <>
                                 {/* user links  */}

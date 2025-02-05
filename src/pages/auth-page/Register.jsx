@@ -31,7 +31,7 @@ const Register = () => {
                 updateUser({ displayName: name, photoURL: photoUrl })
                     .then(result => {
 
-                        axiosPublic.post('/user', { name, email, photoUrl, membership: "Bronze", role: "user" })
+                        axiosPublic.post('/user', { name, email, photoUrl, membership: "Bronze", role: "user", meal_added: 0 })
                             .then(res => {
                                 // console.log(res);
                                 if (res.data.insertedId) {
@@ -43,7 +43,7 @@ const Register = () => {
                                         }
                                     )
 
-                                    navigate('/login');
+                                    navigate('/');
                                     reset(); return;
                                 }
 
