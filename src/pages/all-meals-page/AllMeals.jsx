@@ -22,52 +22,55 @@ const AllMeals = () => {
 
             <SectionTitle title={"All Meals"} />
 
-            <div className="mx-auto w-11/12 lg:flex items-center justify-between">
+            <div className="w-11/12 mx-auto lg:flex items-center lg:justify-between justify-start">
 
-                {/* search field  */}
+                {/* search field + filter by cat field  */}
+                <div className="flex gap-4">
+                    {/* search field  */}
 
-                <div>
-                    <label className="input">
+                    <div className="flex-3">
+                        <label className="input">
 
-                        <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
+                            <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
 
-                        <input type="search" onChange={(e) => {
+                            <input type="search" onChange={(e) => {
 
-                            const text = e.target.value.toLowerCase();
-                            setSearch(text)
+                                const text = e.target.value.toLowerCase();
+                                setSearch(text)
 
-                        }} required placeholder="Search" />
+                            }} required placeholder="Search" />
 
-                    </label>
+                        </label>
+                    </div>
+
+                    {/* filter by category field  */}
+
+                    <select
+
+                        onChange={(e) => {
+                            setCategory(e.target.value);
+                        }}
+                        className="select select-bordered flex-1"
+                    >
+                        <option value="">All Categories</option>
+                        <option value="salad">salad</option>
+                        <option value="drinks">drinks</option>
+                        <option value="dessert">Desserts</option>
+                    </select>
                 </div>
-
-                {/* filter by category field  */}
-
-                <select
-
-                    onChange={(e) => {
-                        setCategory(e.target.value);
-                    }}
-                    className="select select-bordered"
-                >
-                    <option value="">All Categories</option>
-                    <option value="salad">salad</option>
-                    <option value="drinks">drinks</option>
-                    <option value="dessert">Desserts</option>
-                </select>
 
                 {/* filter by price range  */}
 
-                <div className="flex flex-col lg:flex-row gap-4 items-center mt-2">
+                <div className="flex flex-row gap-3 items-start justify-between mt-2">
 
 
                     {/* Min Price Input */}
-                    <div className="flex items-center gap-2">
-                        <label className="text-sm font-medium  text-gray-600">Min:</label>
+                    <div className="">
+                        {/* <label className="text-sm font-medium  text-gray-600">Min:</label> */}
                         <input
                             type="number"
                             placeholder="Min Price"
-                            className="input input-bordered lg:w-32 w-[70vw] mx-auto"
+                            className="input input-bordered lg:w-32 w-[35vw]"
                             onChange={(e) => {
                                 const minPrice = e.target.value; //console.log(minPrice);
                                 setMin(minPrice);
@@ -76,12 +79,12 @@ const AllMeals = () => {
                     </div>
 
                     {/* Max Price Input */}
-                    <div className="flex items-center gap-2">
-                        <label className="text-sm font-medium text-gray-600">Max:</label>
+                    <div className="">
+                        {/* <label className="text-sm font-medium text-gray-600">Max:</label> */}
                         <input
                             type="number"
                             placeholder="Max Price"
-                            className="input input-bordered lg:w-32 w-[80vw] mx-auto"
+                            className="input input-bordered lg:w-32 w-[35vw]"
                             onChange={(e) => {
                                 const maxPrice = e.target.value
                                 setMax(maxPrice);

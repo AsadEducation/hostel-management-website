@@ -65,7 +65,7 @@ const MealCard = ({ item, refetch }) => {
     }
 
     return (
-        <div className="card lg:w-[80%] bg-base-100 shadow-xl mx-auto">
+        <div className="card w-[90%] lg:w-[75%] bg-base-100 shadow-xl mx-auto">
             <figure>
                 <img
                     src={image}

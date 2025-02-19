@@ -10,7 +10,7 @@ const RootLayout = () => {
     // console.log(pathname);
 
     const authPage = pathname.includes('login') || pathname.includes('register');
-    const home = pathname.includes('home'); console.log('is in home', home);
+    const home = pathname.includes('/'); console.log('is in home', home);
 
     return (
         <div>
