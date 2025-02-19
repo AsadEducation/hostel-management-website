@@ -19,7 +19,7 @@ const useUser = (userType, searchName, searchMail) => {
             try {
                 const endpoint = userType === 'single' ? `/users?email=${user?.email}` : `/users?searchName=${searchName}&searchMail=${searchMail}`; console.log(endpoint);
                 const res = await axiosSecure.get(endpoint);
-                console.log(res.data);
+                // console.log(res.data);
                 return res.data;
             } catch (error) {
                 console.log(error);

@@ -67,7 +67,7 @@ const AllMeals = () => {
                         <input
                             type="number"
                             placeholder="Min Price"
-                            className="input input-bordered w-32"
+                            className="input input-bordered lg:w-32 w-[70vw] mx-auto"
                             onChange={(e) => {
                                 const minPrice = e.target.value; //console.log(minPrice);
                                 setMin(minPrice);
@@ -81,7 +81,7 @@ const AllMeals = () => {
                         <input
                             type="number"
                             placeholder="Max Price"
-                            className="input input-bordered w-32"
+                            className="input input-bordered lg:w-32 w-[80vw] mx-auto"
                             onChange={(e) => {
                                 const maxPrice = e.target.value
                                 setMax(maxPrice);

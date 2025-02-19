@@ -23,7 +23,7 @@ const useMeal = (search, category, min, max, sortByLikes, sortByReviewCount, Cou
 
                 const endPoint = CountAddedMeal === 'countAddedMeal' ? `/meals?email=${user?.email}` : `/meals?search=${search}&category=${category}&min=${min}&max=${max}&sortByLikes=${sortByLikes}&sortByReviewCount=${sortByReviewCount}`
 
-                const res = await axiosPublic.get(endPoint);// console.log(res.data);
+                const res = await axiosPublic.get(endPoint); //console.log(res.data);
                 return res.data
 
             } catch (error) {

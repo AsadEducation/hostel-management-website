@@ -10,15 +10,17 @@ const RootLayout = () => {
     // console.log(pathname);
 
     const authPage = pathname.includes('login') || pathname.includes('register');
+    const home = pathname.includes('home'); console.log('is in home', home);
 
     return (
-        <div className="w-11/12 mx-auto">
+        <div>
 
             {!authPage && <Navbar />}
+            {/*  */}
 
-            <Outlet />
+            <div className={`pt-[4vw] ${!home && 'w-11/12 mx-auto'}`} ><Outlet /></div>
 
-            {!authPage && <Footer/>}
+            {!authPage && <Footer />}
 
         </div>
     );

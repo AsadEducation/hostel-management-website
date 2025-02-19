@@ -26,7 +26,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-300 shadow-sm px-[3.6vw] fixed z-10 top-0">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -51,7 +51,7 @@ const Navbar = () => {
                 </div>
                 {/* logo with website name  */}
                 <div className="flex items-center">
-                    <img className="h-15 rounded-2xl" src={logo} alt="" />
+                    <img className="h-15 rounded-2xl hidden lg:block" src={logo} alt="" />
                     <Link className="btn btn-ghost text-xl">Chill Hostel</Link>
                 </div>
             </div>

@@ -13,7 +13,7 @@ const MealCard = ({ item, refetch }) => {
 
     const { pathname } = useLocation(); //console.log(pathname);
     const { user, loading } = useAuth();
-    const { users } = useUser('single'); console.log(users);
+    const { users } = useUser('single'); //console.log(users);
     const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
 
@@ -65,7 +65,7 @@ const MealCard = ({ item, refetch }) => {
     }
 
     return (
-        <div className="card max-w-md bg-base-100 shadow-xl">
+        <div className="card lg:w-[80%] bg-base-100 shadow-xl mx-auto">
             <figure>
                 <img
                     src={image}
