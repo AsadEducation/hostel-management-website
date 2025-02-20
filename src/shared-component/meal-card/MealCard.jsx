@@ -65,7 +65,7 @@ const MealCard = ({ item, refetch }) => {
     }
 
     return (
-        <div className="card w-[90%] lg:w-[75%] bg-base-100 shadow-xl mx-auto">
+        <div className="card w-[90%] lg:w-[75%] bg-base-100 dark:bg-slate-800 shadow-xl mx-auto">
             <figure>
                 <img
                     src={image}
@@ -75,10 +75,10 @@ const MealCard = ({ item, refetch }) => {
             </figure>
             <div className="card-body space-y-3">
                 <h2 className="card-title">{name}</h2>
-                <p className="text-gray-600 font-bold">
+                <p className="text-gray-600 dark:text-white font-bold">
                     Price: <span className="font-semibold">${price}</span>
                 </p>
-                <p className="text-gray-600 font-bold">
+                <p className="text-gray-600 dark:text-white font-bold">
                     Rating: <span className="font-semibold">{rating} ⭐</span>
                 </p>
                 <div className="card-actions justify-end">

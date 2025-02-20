@@ -7,11 +7,11 @@ const Banner = () => {
             className="relative bg-[url(https://images.pexels.com/photos/30338813/pexels-photo-30338813/free-photo-of-chef-preparing-fresh-handmade-pasta-in-kitchen.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)] bg-cover bg-center bg-no-repeat"
         >
             <div
-                className="absolute inset-0 bg-gray-900/75 sm:bg-transparent sm:from-gray-900/95 sm:to-gray-900/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
+                className="absolute inset-0 bg-gray-900/75 dark:bg-gray-900/75 sm:bg-transparent sm:from-gray-900/95 sm:to-gray-900/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"
             ></div>
 
             <div
-                className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex h-[93vh] lg:items-center lg:px-8"
+                className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex h-[93%] lg:items-center lg:px-8"
             >
                 <div className="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
                     <h1 className="text-3xl font-extrabold text-white sm:text-5xl">

@@ -3,17 +3,40 @@ import logo from '../../assets/logo/hostel-logo.jpg'
 import { CgBell } from "react-icons/cg";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
-
+import { useEffect, useState } from "react";
+import { useDarkMode } from "../../Provider/DarkModeProvider";
 
 const Navbar = () => {
 
-    const { user, loading, logoutUser } = useAuth();
+    const { user, logoutUser } = useAuth();
+    const { isDark, setIsDark } = useDarkMode();
 
     const navOptions = <>
 
-        <li><NavLink to={`/`} >Home</NavLink></li>
-        <li><NavLink to={`/meals`} >Meals</NavLink></li>
-        <li><NavLink to={`/upcoming-meals`} >Upcoming Meals</NavLink></li>
+        <li>
+            <NavLink
+                to="/"
+                className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-gray-700 dark:text-white"}
+            >
+                Home
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/meals"
+                className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-gray-700 dark:text-white"}
+            >
+                Meals
+            </NavLink>
+        </li>
+        <li>
+            <NavLink
+                to="/upcoming-meals"
+                className={({ isActive }) => isActive ? "text-blue-500 font-bold" : "text-gray-700 dark:text-white"}
+            >
+                Upcoming Meals
+            </NavLink>
+        </li>
 
     </>
 
@@ -26,7 +49,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className="navbar bg-base-300 shadow-sm px-[3.6vw] fixed z-10 top-0">
+        <div className="navbar bg-base-300 shadow-sm px-[3.6vw] fixed z-10 top-0 dark:bg-slate-800 dark:text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -45,7 +68,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 dark:bg-slate-700 dark:text-white rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {navOptions}
                     </ul>
                 </div>
@@ -62,6 +85,19 @@ const Navbar = () => {
             </div>
             <div className="navbar-end space-x-4">
                 <CgBell className="text-2xl" />
+                {/* toggle button  */}
+
+                <input type="checkbox"
+                    onChange={(e) => {
+                        const darkMode = e.target.checked;
+                        setIsDark(darkMode); //console.log('is dark mode', darkMode);
+                        localStorage.setItem('darkMode', darkMode);
+                    }}
+                    className="toggle dark:text-blue-600"
+                    checked={isDark}
+                />
+
+                {/* ------------------------ */}
                 {
                     user ? <div>
                         <div className="dropdown dropdown-end">
@@ -75,7 +111,7 @@ const Navbar = () => {
                             {/* Dropdown Menu */}
                             <ul
                                 tabIndex={0}
-                                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+                                className="dropdown-content menu p-2 shadow bg-base-100 dark:bg-slate-700 dark:text-white rounded-box w-52"
                             >
                                 <li>
                                     <span >{user?.displayName}</span> {/* Non-clickable */}

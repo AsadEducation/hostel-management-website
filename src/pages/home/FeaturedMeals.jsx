@@ -2,6 +2,7 @@ import useMeal from "../../Hooks/useMeal";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import FoodGrid from "../../shared-component/food-grid/FoodGrid";
+import SectionTitle from "../../shared-component/section-title/SectionTitle";
 
 const FeaturedMeals = () => {
 
@@ -12,8 +13,8 @@ const FeaturedMeals = () => {
     const dinner = meals.filter((each) => each.mealType === "dinner")
 
     return (
-        <div className="mt-12 lg:mt-16">
-            <h2 className="text-3xl lg:text-4xl font-semibold text-center ">Featured Meals</h2>
+        <div className="rounded-lg lg:px-4 lg:pb-6 ">
+            <SectionTitle title={"Featured Meal"}/>
 
             {/* remove the "min-h-screen" class from tab later */}
 

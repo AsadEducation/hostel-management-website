@@ -66,12 +66,12 @@ const Login = () => {
     }
 
     return (
-        <section className="relative flex flex-wrap lg:h-screen lg:items-center">
-            <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
+        <section className="flex lg:items-center">
+            <div className="w-full px-4 sm:px-6 lg:w-1/2 scale-75">
                 <div className="mx-auto max-w-lg text-center">
                     <h1 className="text-2xl font-bold sm:text-3xl">Please Login!</h1>
 
-                    <p className="mt-4 text-gray-500">
+                    <p className="mt-4 text-gray-500 dark:text-white">
                         Enter the information accurately
                     </p>
                 </div>
@@ -81,7 +81,7 @@ const Login = () => {
 
                     <div className="space-y-1 text-sm">
 
-                        <label htmlFor="email" className="block text-gray-400 dark:text-gray-600">Email</label>
+                        <label htmlFor="email" className="block text-gray-400 dark:text-white">Email</label>
 
                         <input type="email" {...register('email', { required: 'email is required' })} id="Email" placeholder="Email" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
 
@@ -95,7 +95,7 @@ const Login = () => {
 
                     <div className="space-y-1 text-sm">
 
-                        <label htmlFor="password" className="block text-gray-400 dark:text-gray-600">Password</label>
+                        <label htmlFor="password" className="block text-gray-400 dark:text-white">Password</label>
 
                         <input type="password" {...register('password', { required: 'Password is required' })} id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
 
@@ -103,7 +103,7 @@ const Login = () => {
 
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
 
-                        <div className="flex justify-end text-xs text-gray-400 dark:text-gray-600">
+                        <div className="flex justify-end text-xs text-gray-400 dark:text-white">
                             <a rel="noopener noreferrer" href="#">Forgot Password?</a>
                         </div>
                     </div>
@@ -112,7 +112,7 @@ const Login = () => {
 
                     <div className="space-y-1 text-sm">
 
-                        <label htmlFor="password" className="block text-gray-400 dark:text-gray-600">Captcha</label>
+                        <label htmlFor="password" className="block text-gray-400 dark:text-white">Captcha</label>
 
                         <input type="text" {...register('captcha', { required: 'Captcha is required' })} id="captcha" placeholder="captcha" className="w-full px-4 py-3 rounded-md border-gray-700 dark:border-gray-300 bg-gray-900 dark:bg-gray-50 text-gray-100 dark:text-gray-800 focus:border-blue-400 focus:dark:border-blue-600" />
 
@@ -136,23 +136,23 @@ const Login = () => {
 
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 bg-gray-700 dark:bg-gray-300"></div>
-                    <p className="px-3 text-sm text-gray-400 dark:text-gray-600">Login with social accounts</p>
+                    <p className="px-3 text-sm text-gray-400 dark:text-white">Login with social accounts</p>
                     <div className="flex-1 h-px sm:w-16 bg-gray-700 dark:bg-gray-300"></div>
                 </div>
 
                 {/* social login entry point */}
 
-                <div className='w-[50%] mx-auto'>
+                <div className='md:w-[80%] mx-auto'>
                     <SocialLogin desiredRoute={desiredRoute} />
                 </div>
 
             </div>
 
-            <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+            <div className="hidden md:block  w-full  lg:w-1/2">
                 <img
                     alt=""
                     src="https://images.unsplash.com/photo-1630450202872-e0829c9d6172?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className=" inset-0 h-full w-full object-cover"
                 />
             </div>
         </section>

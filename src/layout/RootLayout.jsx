@@ -13,12 +13,12 @@ const RootLayout = () => {
     const home = pathname.includes('/'); console.log('is in home', home);
 
     return (
-        <div>
+        <div className="dark:bg-slate-700 dark:text-white">
 
             {!authPage && <Navbar />}
             {/*  */}
 
-            <div className={`pt-[4vw] ${!home && 'w-11/12 mx-auto'}`} ><Outlet /></div>
+            <div className={` ${!authPage && 'pt-[4vw]'} ${!home && 'w-11/12 mx-auto'}`} ><Outlet /></div>
 
             {!authPage && <Footer />}
 

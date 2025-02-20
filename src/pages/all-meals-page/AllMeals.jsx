@@ -29,7 +29,7 @@ const AllMeals = () => {
                     {/* search field  */}
 
                     <div className="flex-3">
-                        <label className="input">
+                        <label className="input dark:bg-slate-800 dark:text-white">
 
                             <svg className="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
 
@@ -38,7 +38,9 @@ const AllMeals = () => {
                                 const text = e.target.value.toLowerCase();
                                 setSearch(text)
 
-                            }} required placeholder="Search" />
+                            }}
+                            className=""
+                             required placeholder="Search" />
 
                         </label>
                     </div>
@@ -50,7 +52,7 @@ const AllMeals = () => {
                         onChange={(e) => {
                             setCategory(e.target.value);
                         }}
-                        className="select select-bordered flex-1"
+                        className="select select-bordered flex-1 dark:bg-slate-800"
                     >
                         <option value="">All Categories</option>
                         <option value="salad">salad</option>
@@ -70,7 +72,7 @@ const AllMeals = () => {
                         <input
                             type="number"
                             placeholder="Min Price"
-                            className="input input-bordered lg:w-32 w-[35vw]"
+                            className="input input-bordered lg:w-32 w-[35vw] dark:bg-slate-800"
                             onChange={(e) => {
                                 const minPrice = e.target.value; //console.log(minPrice);
                                 setMin(minPrice);
@@ -84,7 +86,7 @@ const AllMeals = () => {
                         <input
                             type="number"
                             placeholder="Max Price"
-                            className="input input-bordered lg:w-32 w-[35vw]"
+                            className="input input-bordered lg:w-32 w-[35vw] dark:bg-slate-800"
                             onChange={(e) => {
                                 const maxPrice = e.target.value
                                 setMax(maxPrice);

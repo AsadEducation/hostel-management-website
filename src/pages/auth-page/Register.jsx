@@ -61,11 +61,10 @@ const Register = () => {
     }
 
     return (
-        <section className="relative flex flex-wrap lg:h-screen lg:items-center">
-            <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
+        <section className="flex lg:h-screen lg:items-center">
+            <div className="w-full px-4  sm:px-6  lg:w-1/2 lg:px-8 scale-75">
                 <div className="mx-auto max-w-lg text-center">
                     <h1 className="text-2xl font-bold sm:text-3xl">Register Your Account!</h1>
-
 
                 </div>
 
@@ -114,7 +113,7 @@ const Register = () => {
 
                         </div>
                     </div>
-                    <button className="w-full btn px-8 py-3 font-semibold rounded-md dark:text-gray-50 dark:bg-blue-600">Register</button>
+                    <button className="w-full btn px-8 py-3 font-semibold rounded-md text-gray-50 bg-blue-600">Register</button>
                     <div className="flex text-sm gap-2">
                         <p>Already Have a Account ? consider </p> <Link to={`/login`} className="underline text-blue-400"> Login</Link>
                     </div>
@@ -122,11 +121,11 @@ const Register = () => {
 
             </div>
 
-            <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+            <div className="hidden md:block  w-full lg:h-full lg:w-1/2">
                 <img
                     alt=""
                     src="https://images.unsplash.com/photo-1617195737496-bc30194e3a19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                    className="absolute inset-0 h-full w-full object-cover opacity-80"
+                    className="inset-0 h-full w-full object-cover opacity-80"
                 />
             </div>
         </section>
