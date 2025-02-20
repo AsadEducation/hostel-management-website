@@ -120,23 +120,23 @@ const AddOrUpdateMeal = () => {
     }
 
     return (
-        <div>
+        <div className="dark:text-white scale-90 rounded-lg">
             {isAddForm ? <SectionTitle title={`Add ${isUpcoming ? "Upcoming" : "Meal"}`} /> : <SectionTitle title={'Update Food'} />}
 
             <div className="md:w-[90%] mx-auto  mt-8 px-2 lg:px-4 py-4 lg:py-6" >
 
-                <form onSubmit={handleSubmit(onsubmit)} className="bg-white lg:px-8  rounded-lg  lg:max-w-[60vw] mx-auto space-y-6">
+                <form onSubmit={handleSubmit(onsubmit)} className="lg:px-8  rounded-lg  lg:max-w-[60vw] mx-auto space-y-6">
 
                     {/* Meal Name Input */}
                     <div className="form-control">
-                        <label className="label">
+                        <label className="label dark:text-blue-400">
                             <span className="label-text font-medium">*Meal Name</span>
                         </label>
                         <input
                             type="text"
                             {...register("name", { required: true })}
                             placeholder="Enter meal name"
-                            className="input input-bordered w-full"
+                            className="input input-bordered dark:bg-slate-400  w-full"
                             defaultValue={isAddForm ? "" : `${state?.name}`}
                         />
                     </div>
@@ -145,12 +145,12 @@ const AddOrUpdateMeal = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         {/* Category Input */}
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label dark:text-blue-400">
                                 <span className="label-text font-medium">*Category</span>
                             </label>
                             <select
                                 {...register("category", { required: true })}
-                                className="select block select-bordered"
+                                className="select block select-bordered dark:bg-slate-400"
                             >
                                 <option defaultValue={isAddForm ? "Pick One" : `${state?.category}`}>Pick a category</option>
                                 <option value="dessert">Dessert</option>
@@ -163,12 +163,12 @@ const AddOrUpdateMeal = () => {
 
                         {/* Meal Type Input */}
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label dark:text-blue-400">
                                 <span className="label-text font-medium">*Meal Type</span>
                             </label>
                             <select
                                 {...register("mealType", { required: true })}
-                                className="select select-bordered block"
+                                className="select select-bordered dark:bg-slate-400 block"
                             >
                                 <option defaultValue={isAddForm ? "Pick One" : `${state?.mealType}`}>Pick a meal type</option>
                                 <option value="breakfast">Breakfast</option>
@@ -178,14 +178,14 @@ const AddOrUpdateMeal = () => {
                         </div>
                         {/* post time input  */}
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label dark:text-blue-400">
                                 <span className="label-text font-medium">*Post Time</span>
                             </label>
                             <input
                                 type="date"
                                 {...register("postTime", { required: true })}
                                 placeholder=""
-                                className="input input-bordered w-full"
+                                className="input input-bordered dark:bg-slate-400  w-full"
                                 step="0.01"
                                 defaultValue={isAddForm ? "" : `${state?.postTime}`}
                             />
@@ -194,14 +194,14 @@ const AddOrUpdateMeal = () => {
 
                     {/* Price Input */}
                     <div className="form-control">
-                        <label className="label">
+                        <label className="label dark:text-blue-400">
                             <span className="label-text font-medium">*Price</span>
                         </label>
                         <input
                             type="number"
                             {...register("price", { required: true })}
                             placeholder="Enter price"
-                            className="input input-bordered w-full"
+                            className="input input-bordered dark:bg-slate-400  w-full"
                             step="0.01"
                             defaultValue={isAddForm ? "" : `${state?.price}`}
                         />
@@ -212,28 +212,28 @@ const AddOrUpdateMeal = () => {
 
                         {/* name  */}
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label dark:text-blue-400">
                                 <span className="label-text font-medium">*Distributor Name</span>
                             </label>
                             <input
                                 type="text"
                                 {...register("distributorName", { required: true })}
                                 placeholder="Enter distributor name"
-                                className="input input-bordered w-full"
+                                className="input input-bordered dark:bg-slate-400  w-full"
                                 readOnly
                                 defaultValue={isAddForm ? `${user?.displayName}` : `${state?.distributorName}`}
                             />
                         </div>
                         {/* email  */}
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label dark:text-blue-400">
                                 <span className="label-text font-medium">*Distributor Email</span>
                             </label>
                             <input
                                 type="email"
                                 {...register("distributorEmail", { required: true })}
                                 placeholder="ping@pang.com"
-                                className="input input-bordered w-full"
+                                className="input input-bordered dark:bg-slate-400  w-full"
                                 readOnly
                                 defaultValue={isAddForm ? `${user?.email}` : `${state?.email}`}
                             />
@@ -245,26 +245,26 @@ const AddOrUpdateMeal = () => {
 
                         {/* Ingredients Text Area */}
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label dark:text-blue-400">
                                 <span className="label-text font-medium">*Ingredients (Comma Separated)</span>
                             </label>
                             <textarea
                                 {...register("ingredients", { required: true })}
                                 placeholder="Enter ingredients separated by commas"
-                                className="textarea textarea-bordered block min-h-[12vh] lg:w-[400px]"
+                                className="textarea textarea-bordered dark:bg-slate-400 block min-h-[12vh] lg:w-[400px]"
                                 defaultValue={isAddForm ? "" : `${state?.ingredients}`}
                             />
                         </div>
 
                         {/* Recipe Details Text Area */}
                         <div className="form-control">
-                            <label className="label">
+                            <label className="label dark:text-blue-400">
                                 <span className="label-text font-medium">*Recipe Details</span>
                             </label>
                             <textarea
                                 {...register("details", { required: true })}
                                 placeholder="Enter recipe details"
-                                className="textarea block textarea-bordered min-h-[12vh] lg:w-[400px]"
+                                className="textarea block textarea-bordered dark:bg-slate-400 min-h-[12vh] lg:w-[400px]"
                                 defaultValue={isAddForm ? "" : `${state?.details}`}
                             />
                         </div>
@@ -272,13 +272,13 @@ const AddOrUpdateMeal = () => {
 
                     {/* Image File Input */}
                     <div className="form-control">
-                        <label className="label">
+                        <label className="label dark:text-blue-400">
                             <span className="label-text font-medium">*Image</span>
                         </label>
                         <input
                             {...register("image", { required: true })}
                             type="file"
-                            className="file-input file-input-bordered w-full"
+                            className="file-input file-input-bordered dark:bg-slate-400  w-full"
                         />
                     </div>
 

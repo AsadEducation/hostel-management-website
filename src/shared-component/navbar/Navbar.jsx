@@ -117,7 +117,7 @@ const Navbar = () => {
                                     <span >{user?.displayName}</span> {/* Non-clickable */}
                                 </li>
                                 <li>
-                                    <Link to="/dashboard">Dashboard</Link>
+                                    <Link to="/dashboard/admin-profile">Dashboard</Link>
                                 </li>
                                 <li>
                                     <button onClick={handleLogout}>Logout</button>

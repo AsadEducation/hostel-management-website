@@ -14,9 +14,9 @@ const DashboardLayout = () => {
     return (
         <div className='flex min-h-screen'>
             {/* dashboard navigation sidebar  */}
-            <div className='w-[20%] bg-[#D1A054]'>
+            <div className='w-[20%] bg-cyan-600 dark:bg-slate-800 dark:text-white'>
                 {/* navlinks in sidebar for routing */}
-                <ul className="menu space-y-8 mt-8 lg:mt-12 w-[70%] mx-auto">
+                <ul className="menu space-y-8 mt-8 lg:mt-12 w-[70%] md:scale-90 mx-auto">
                     {
                         isAdmin ? <>
                             {/* admin links  */}
@@ -45,7 +45,7 @@ const DashboardLayout = () => {
                 </ul>
             </div>
             {/* dashboard pages  */}
-            <div className='w-[78%]'>
+            <div className='w-[78%] dark:bg-slate-700'>
                 <Outlet></Outlet>
             </div>
 

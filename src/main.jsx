@@ -12,7 +12,9 @@ createRoot(document.getElementById('root')).render(
     <TenstackProvider>
       <AuthProvider>
         <DarkModeProvider>
-          <RouterProvider router={router} />
+          <div className='font-[inter]'>
+            <RouterProvider router={router} />
+          </div>
         </DarkModeProvider>
       </AuthProvider>
     </TenstackProvider>

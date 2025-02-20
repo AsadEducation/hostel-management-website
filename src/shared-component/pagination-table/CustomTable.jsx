@@ -147,72 +147,72 @@ const CustomTable = ({ info }) => {
     return (
         <div className="rounded-lg border border-gray-200 w-[90%] mt-12 lg:mt-16 mx-auto">
             <div className="overflow-x-auto rounded-t-lg">
-                <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+                <table className="min-w-full divide-y-2 divide-gray-200 bg-white  dark:bg-slate-600 dark:text-white text-sm">
                     <thead className="ltr:text-left rtl:text-right">
                         {
                             // if review user is accessing the table 
                             isReview && <tr>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Review</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 ">Actions</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Likes</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Review</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white ">Actions</th>
                             </tr>
                         }
                         {
                             //if ManageUsers is accessing the table
                             data[0]?.email && <tr>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Email</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Role</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Action</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 ">Status</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Name</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Email</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Role</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Action</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white ">Status</th>
                             </tr>
                         }
                         {
                             //if ManageUsers is accessing the table
                             isAllMeals && <tr>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Meal Title</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Review Count</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Rating</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Distributor Name</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Actions</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Meal Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Likes</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Review Count</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Rating</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Distributor Name</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Actions</th>
                             </tr>
                         }
                         {
                             isUpcoming && <tr>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Meal Title</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Image</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Actions</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Meal Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Image</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Likes</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Actions</th>
                             </tr>
 
                         }
                         {
                             isPayment && <tr>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Email</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Price</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">TransactionId</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Time</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">status</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Email</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Price</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">TransactionId</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Time</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">status</th>
                             </tr>
                         }
                         {
                             isRequested && <tr>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Likes</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Reviews Count</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">status</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Action</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Likes</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Reviews Count</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">status</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Action</th>
                             </tr>
                         }
                         {
                             isServeMeal && <tr>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Title</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">User Name</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">User Email</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">status</th>
-                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Action</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Title</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">User Name</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">User Email</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">status</th>
+                                <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">Action</th>
                             </tr>
                         }
                     </thead>
@@ -224,10 +224,10 @@ const CustomTable = ({ info }) => {
                                     return (
                                         // if review user is accessing the table 
                                         <tr key={index} >
-                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.meal_name}</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.likes_count}</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.reviewText}</td>
-                                            <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
+                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.meal_name}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white">{each?.likes_count}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white">{each?.reviewText}</td>
+                                            <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 dark:text-white ">
                                                 <Link state={each} to={`/dashboard/review-edit`} className="btn btn-ghost"><FaEdit className="text-blue-500 " /></Link>
                                                 <button onClick={() => handleReviewDelete(each?._id)} className="btn btn-ghost"><FaTrash className="text-red-500 " /></button>
                                                 <Link to={`/meal-details/${each?.meal_id}`} className="btn btn-ghost">view</Link>
@@ -238,16 +238,16 @@ const CustomTable = ({ info }) => {
                                 if (each?.email) {
                                     return (
                                         <tr key={index}>
-                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
                                                 {each?.name}
                                             </td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white">
                                                 {each?.email}
                                             </td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white">
                                                 {each?.role ? "Admin" : "User"}
                                             </td>
-                                            <td className="whitespace-nowrap  px-4 py-2 text-gray-700">
+                                            <td className="whitespace-nowrap  px-4 py-2 text-gray-700 dark:text-white">
                                                 <button
                                                     onClick={() => handleMakeAdmin(each?._id)}
                                                     className="btn "
@@ -255,7 +255,7 @@ const CustomTable = ({ info }) => {
                                                     Make Admin
                                                 </button>
                                             </td>
-                                            <td className={`whitespace-nowrap px-4 py-2 text-gray-700 ${each?.membership == 'Bronze' ? 'text-yellow-700' : 'text-red-600'}`}>
+                                            <td className={`whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white ${each?.membership == 'Bronze' ? 'text-yellow-700' : 'text-red-600'}`}>
                                                 {each?.membership}
                                             </td>
                                         </tr>
@@ -264,12 +264,12 @@ const CustomTable = ({ info }) => {
                                 if (isAllMeals) {
                                     return (
                                         <tr key={index}>
-                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.name}</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.reactionCount}</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.reviews_count}</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.rating}</td>
-                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.distributorName}</td>
-                                            <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
+                                            <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.name}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white">{each?.reactionCount}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white">{each?.reviews_count}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white">{each?.rating}</td>
+                                            <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white">{each?.distributorName}</td>
+                                            <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 dark:text-white ">
                                                 <Link state={each} to={`/dashboard/update-meal`} className="btn btn-ghost">
                                                     <FaEdit className="text-blue-500 " />
                                                 </Link>
@@ -284,7 +284,7 @@ const CustomTable = ({ info }) => {
                                 }
                                 if (isUpcoming) {
                                     return <tr key={index}>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.name}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.name}</td>
 
                                         <td className="whitespace-nowrap px-4 py-2">
                                             <div className="avatar">
@@ -296,9 +296,9 @@ const CustomTable = ({ info }) => {
                                             </div>
                                         </td>
 
-                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700">{each?.reactionCount}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-white">{each?.reactionCount}</td>
 
-                                        <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 ">
+                                        <td className="whitespace-nowrap flex gap-3 px-4 py-2 text-gray-700 dark:text-white ">
                                             {/* publish button  */}
                                             <button onClick={() => handleMealPublish(each, axiosSecure, refetch)} className="btn btn-primary">Publish</button>
                                             {/* upcoming meal add Link */}
@@ -310,20 +310,20 @@ const CustomTable = ({ info }) => {
                                 }
                                 if (isPayment) {
                                     return <tr key={index}>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.user_email}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.price}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.user_email}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.price}</td>
                                         <td className="whitespace-nowrap px-4 py-2 font-medium text-blue-500">{each?.transactionId}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.payment_date}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.payment_date}</td>
                                         <td className="whitespace-nowrap px-4 py-2 font-medium text-green-600">{each?.status}</td>
                                     </tr>
                                 }
                                 if (isRequested) {
                                     return <tr key={index}>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.meal_name}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.reactionCount}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.meal_name}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.reactionCount}</td>
                                         <td className="whitespace-nowrap px-4 py-2 font-medium text-blue-500">{each?.reviews_count}</td>
                                         <td className="whitespace-nowrap px-4 py-2 font-medium text-yellow-400">{each?.status}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
                                             <button onClick={() => handleRequestDelete(each?._id)} className="btn btn-error text-white">
                                                 Cancel
                                             </button>
@@ -333,11 +333,11 @@ const CustomTable = ({ info }) => {
                                 }
                                 if (isServeMeal) {
                                     return <tr key={index}>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.meal_name}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.user_name}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{each?.user_email}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.meal_name}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.user_name}</td>
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">{each?.user_email}</td>
                                         <td className="whitespace-nowrap px-4 py-2 font-medium text-yellow-400">{each?.status}</td>
-                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                                        <td className="whitespace-nowrap px-4 py-2 font-medium text-gray-900 dark:text-white">
                                             <button onClick={() => handleMealServe(each?._id)} className="btn btn-success text-white">
                                                 {each?.status == "pending" ? "Serve" : "Served"}
                                             </button>
