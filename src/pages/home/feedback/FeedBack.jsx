@@ -2,7 +2,7 @@
 const FeedBack = () => {
     return (
         <section className="text-gray-600 dark:text-white body-font relative">
-            <div className="lg:flex justify-between">
+            <div className="md:flex justify-between">
 
                 <div className="lg:w-2/3 md:w-1/2 bg-gray-300 dark:bg-slate-400 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
                     <iframe
