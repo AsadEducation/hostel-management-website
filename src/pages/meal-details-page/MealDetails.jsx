@@ -31,7 +31,7 @@ const MealDetails = () => {
     const handleLike = async () => {
 
         if (loading) return <span className="loading loading-bars loading-xs"></span>
-        
+
         if (!user) {
 
             Swal.fire({ title: "Please Login First", icon: 'warning' })
@@ -92,7 +92,7 @@ const MealDetails = () => {
     return (
         <div>
 
-            <div className="max-w-[95vw] min-h-screen lg:flex lg:gap-12 justify-between  items-center mx-auto p-6 bg-white ">
+            <div className="max-w-[95vw] min-h-screen lg:flex lg:gap-12 justify-between  items-center mx-auto p-6 dark:text-white">
                 {/* Food Image */}
                 <img
                     src={image}
@@ -108,20 +108,20 @@ const MealDetails = () => {
 
                     <h1 className="text-4xl font-bold mt-6 text-green-500">{name}</h1>
 
-                    <p className="text-gray-700">{details}</p>
+                    <p className="text-gray-700 dark:text-blue-300">{details}</p>
 
                     <div className="space-y-3">
-                        <p className=" font-semibold text-gray-700">Category: <span className=" text-gray-600 text-sm ml-3">{category}</span></p>
+                        <p className=" font-semibold text-gray-700 dark:text-blue-300">Category: <span className=" text-gray-600 dark:text-white text-sm ml-3">{category}</span></p>
 
-                        <p className=" font-semibold text-gray-700">price: <span className=" text-gray-600 text-sm ml-3">${price}</span></p>
+                        <p className=" font-semibold text-gray-700 dark:text-blue-300">price: <span className=" text-gray-600 dark:text-white text-sm ml-3">${price}</span></p>
 
-                        <p className=" font-semibold text-gray-700">Meal Type: <span className=" text-gray-600 text-sm ml-3">{mealType}</span></p>
+                        <p className=" font-semibold text-gray-700 dark:text-blue-300">Meal Type: <span className=" text-gray-600 dark:text-white text-sm ml-3">{mealType}</span></p>
 
-                        <p className=" font-semibold text-gray-700">Post Time: <span className=" text-gray-600 text-sm ml-3">{postTime}</span></p>
+                        <p className=" font-semibold text-gray-700 dark:text-blue-300">Post Time: <span className=" text-gray-600 dark:text-white text-sm ml-3">{postTime}</span></p>
 
-                        <p className=" font-semibold text-gray-700">Rating: <span className=" text-gray-600 text-sm ml-3">{rating}</span></p>
+                        <p className=" font-semibold text-gray-700 dark:text-blue-300">Rating: <span className=" text-gray-600 dark:text-white text-sm ml-3">{rating}</span></p>
 
-                        <p className=" font-semibold text-gray-700">Likes: <span className=" text-gray-600 text-sm ml-3">{like}</span></p>
+                        <p className=" font-semibold text-gray-700 dark:text-blue-300">Likes: <span className=" text-gray-600 dark:text-white text-sm ml-3">{like}</span></p>
 
                         {/* <p ><SlLike className="text-2xl text-blue-700" /></p> */}
 
@@ -130,8 +130,8 @@ const MealDetails = () => {
 
 
                     <div className="mt-4">
-                        <h2 className="text-2xl font-semibold text-gray-700">Ingredients</h2>
-                        <ul className="list-disc list-inside mt-2 space-y-2  text-gray-600">
+                        <h2 className="text-2xl font-semibold text-gray-700 dark:text-blue-300">Ingredients</h2>
+                        <ul className="list-disc list-inside mt-2 space-y-2  text-gray-600 dark:text-white">
                             {
                                 Array.isArray(ingredients) && ingredients.map((ingredient, index) => {
                                     return <li key={index} className="font-medium">{ingredient}</li>
@@ -143,7 +143,7 @@ const MealDetails = () => {
 
                     {/* Donator Information */}
                     <div className="mt-6">
-                        <h2 className="text-2xl font-semibold text-gray-700">Distributor</h2>
+                        <h2 className="text-2xl font-semibold text-gray-700 dark:text-blue-300">Distributor</h2>
                         <div className="flex items-center mt-4">
                             <img
                                 src={""}
@@ -152,7 +152,7 @@ const MealDetails = () => {
                             />
                             <div className="ml-4">
                                 <p className="text-lg font-semibold">{distributorName}</p>
-                                <p className="text-gray-600">{ }</p>
+                                <p className="text-gray-600 dark:text-white">{ }</p>
                             </div>
                         </div>
                     </div>

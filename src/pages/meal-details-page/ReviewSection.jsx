@@ -55,13 +55,13 @@ const ReviewSection = ({ info }) => {
             {/* <h2 className="text-3xl lg:text-4xl text-center text-green-500 font-semibold animate-bounce italic"> User Reviews ({reviewCount})</h2> */}
             <SectionTitle title={`user reviews (${reviews.length})`} />
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
+            <div className={`grid grid-cols-1 lg:${reviews.length ? 'grid-cols-2 gap-2' : 'grid-cols-1 w-[80vw]'} mx-auto`}>
 
                 {/* container for showing reviews  */}
                 <div>
                     {
                         reviews.map((review, index) => {
-                            return <article key={index} className="rounded-xl border-2 border-gray-100 bg-white mb-2">
+                            return <article key={index} className="rounded-xl border-2 border-gray-100 mb-2">
                                 <div className="flex items-start gap-4 p-4 sm:p-6 lg:p-8">
 
                                     <div>
@@ -144,7 +144,7 @@ const ReviewSection = ({ info }) => {
                             ref={textareaRef}
                         ></textarea>
 
-                        <div className="flex items-center justify-end gap-2 bg-white p-3">
+                        <div className="flex items-center justify-end gap-2 p-3">
                             <button
                                 onClick={(e) => {
                                     textareaRef.current.value = '';
