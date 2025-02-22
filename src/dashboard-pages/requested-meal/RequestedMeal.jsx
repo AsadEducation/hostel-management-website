@@ -11,8 +11,8 @@ const RequestedMeal = () => {
     if (isLoading) return <Skeleton />
 
     if (!data) {
-        return <div className="grid h-[60vh] place-content-center bg-white px-4">
-            <h1 className="uppercase tracking-widest text-gray-500">Please | Request Food First</h1>
+        return <div className="grid h-[60vh] place-content-center px-4">
+            <h1 className="uppercase tracking-widest text-gray-500 dark:text-white">Please | Request Food First</h1>
         </div>
     }
 

@@ -1,5 +1,5 @@
 
-import { useLoaderData, useNavigate } from "react-router-dom";
+import {useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
@@ -61,7 +61,9 @@ const MealDetails = () => {
         }
 
         if (users[0]?.membership == "Bronze" || !users[0]?.membership) {
-            return Swal.fire({ icon: "warning", title: "Please Subscribe to Gold/Silver" })
+            Swal.fire({ icon: "warning", title: "Please Subscribe to Gold/Silver" })
+            navigate('/payment/Gold')
+            return;
         }
 
         const reqItem = {
